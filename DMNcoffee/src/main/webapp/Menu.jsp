@@ -5,8 +5,7 @@
     pageEncoding="UTF-8"%>
 <%
 	CategoryService cservice = new CategoryService();
-	List<CategoryDTO> ctnm = cservice.select();
-	
+	List<CategoryDTO> ctnm = cservice.selectAll();
 %>
 <!DOCTYPE html>
 <html>
@@ -21,14 +20,14 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	$.ajax({
+		
+		$.ajax({
 		url : "html/iceCoffee.jsp",
 		dataType : "html",
 		success : function(result){
 			$("#menu").html(result);
-		}//default 화면
-	});
+			}//default 화면
+		});
 	
 		$("#btn2").on("click",function(){
 			$("button:focus").css("background-color", "#E1F6FA");
@@ -107,19 +106,13 @@ $(document).ready(function() {
 
 <body>
 	<header>
-		<button class="home" onclick="location.href='First'"><img class="home-icon" src="image/utility/home.png"></button>
-		<img class="logo"src="image/utility/로고.png">
+		<jsp:include page="common/top.jsp"></jsp:include>
 	</header>
-	<div class="category"><!-- for문 -->
-		<button id="btn2"><%= ctnm.get(5).getCtnm() %></button>
-		<button id="btn3"><%= ctnm.get(4).getCtnm() %></button>
-		<button id="btn4"><%= ctnm.get(3).getCtnm() %></button>
-		<button id="btn5"><%= ctnm.get(2).getCtnm() %></button>
-		<button id="btn6"><%= ctnm.get(1).getCtnm() %></button>
-		<button id="btn7"><%= ctnm.get(0).getCtnm() %></button>
-	</div>
+	<!-- 카테고리 선택 버튼 테이블 -->
+	<jsp:include page="common/Category.jsp" flush="true"></jsp:include>
 	<!-- 메뉴 html -->
 	<div id="menu"></div>
+	
 	<!-- 장바구니  이미지 교체하기 구현하기   -->
 	<div class="slidebox" style="background-color: #f1f3f5;">
 	<img src="image/utility/장바구니.png" style="size: 40%; position: absolute; margin-left: 70px; margin-top: 10px;">

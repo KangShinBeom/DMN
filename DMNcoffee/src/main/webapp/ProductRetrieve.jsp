@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.dto.ProductDTO"%>
+<%@ page import="com.dto.CategoryDTO"%>
 <%
 	ProductDTO pdto = (ProductDTO)request.getAttribute("ProductRetrieve");
+	CategoryDTO cdto = (CategoryDTO)request.getAttribute("CategoryRetrieve");
 	
 	String pdnm = pdto.getPdnm();
 	int pdprice = pdto.getPdprice();
-	int pdno = pdto.getPdno();
-	int ctno = pdto.getCtno();
+	
+	String ctnm = cdto.getCtnm();
 	
 %>
 <!DOCTYPE html>
@@ -16,6 +18,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ProductRetrieve.css">
+<script type="text/javascript">
+	function doOpenCheck(chk){
+	    var obj = document.getElementsByName("ice");
+	    for(var i=0; i<obj.length; i++){
+	        if(obj[i] != chk){
+	            obj[i].checked = false;
+	        }
+	    }
+	}
+</script>
 </head>
 <body>
 <header>
@@ -26,17 +38,15 @@
 <table>
 	<tr>
 		<td rowspan="2">
-			<img src="image/menu/커피(ICE)/<%=pdnm%>.png" style="width: 200px; height: 200px;">
+			<img src="image/menu/<%=ctnm %>/<%=pdnm%>.png" style="width: 200px; height: 200px;">
 		</td>
 		<td width="250px;" style="font-size: 20px; text-align:center;">
 			<%= pdnm %>
 		</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;">
-			<img src="image/utility/down1.png" style="width: 20px; height: 20px;">
-			<input type="text" style="text-align: right; height: 20px; width: 30px;" value="1">
-			<img src="image/utility/up1.png" style="width: 20px; height: 20px;"> 
+		<td style="font-size: 20px; text-align: center;">
+			￦<%= pdprice %>
 		</td>
 	</tr>
 </table>
@@ -44,17 +54,25 @@
 <div class="accordion">
 	<input type="checkbox" id="opt1">
 	<label for="opt1">무료옵션<em></em></label>
-	<div>
-		<input type="radio" name="ice" id="ice">얼음많이
-		<input type="radio" name="ice" id="ice" checked="checked">얼음보통
-		<input type="radio" name="ice" id="ice">얼음적게
+	<div style="width: 100%; height: 60px; position: absolute;">
+		<input type="checkbox" id="cb1" name="ice" value="1">
+	    <label for="cb1" style="background-image: url('image/menu/옵션/얼음적게.png'); margin-top: 3px;" onclick="doOpenCheck(this);"></label>
+	    <input type="checkbox" id="cb2" name="ice" value="2" checked="checked">
+	    <label for="cb2" style="background-image: url('image/menu/옵션/얼음보통.png');" onclick="doOpenCheck(this);"></label>
+	    <input type="checkbox" id="cb3" name="ice" value="3">
+	    <label for="cb3" style="background-image: url('image/menu/옵션/얼음많게.png');" onclick="doOpenCheck(this);"></label>
 	</div>
 	<input type="checkbox" id="opt2">
-	<label for="opt2">유료옵션<em></em></label>
-	<div>
-		<input type="checkbox" name=paidopt id="paidopt">샷 추가 (+500원)<br>
-		<input type="checkbox" name=paidopt id="paidopt">휘핑크림 추가 (+500원)<br>
-		<input type="checkbox" name=paidopt id="paidopt">시럽 추가 (+500원)
+	<label for="opt2" style="margin-top: 60px;">유료옵션<em></em></label>
+	<div style="height: 60px;">
+		<input type="checkbox" name=paidopt id="cb4">
+		<label for="cb4" style="background-image: url('image/menu/옵션/샷추가.png'); margin-top: 3px;"></label>
+		<input type="checkbox" name=paidopt id="cb5">
+		<label for="cb5" style="background-image: url('image/menu/옵션/휘핑크림.png');"></label>
+		<input type="checkbox" name=paidopt id="cb6">
+		<label for="cb6" style="background-image: url('image/menu/옵션/바닐라시럽.png');"></label>
+		<input type="checkbox" name=paidopt id="cb7">
+		<label for="cb7" style="background-image: url('image/menu/옵션/헤이즐넛시럽.png');"></label>
 	</div>
 </div>
 

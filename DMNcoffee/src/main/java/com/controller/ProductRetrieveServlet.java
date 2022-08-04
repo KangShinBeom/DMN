@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dto.CategoryDTO;
 import com.dto.ProductDTO;
+import com.service.CategoryService;
 import com.service.ProductService;
 
 /**
@@ -35,11 +37,15 @@ public class ProductRetrieveServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		int pdno = Integer.parseInt(request.getParameter("pdno"));
-		
 		ProductService pservice = new ProductService();
 		ProductDTO pdto = pservice.selectPDNO(pdno);
 		
+		int ctno = pdto.getCtno();
+		CategoryService cservice = new CategoryService();
+		CategoryDTO cdto = cservice.selectCTNM(ctno);
+		
 		request.setAttribute("ProductRetrieve", pdto);
+		request.setAttribute("CategoryRetrieve", cdto);
 	 
 		RequestDispatcher dis = request.getRequestDispatcher("ProductRetrieve.jsp");
 		dis.forward(request, response);

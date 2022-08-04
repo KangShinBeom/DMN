@@ -4,10 +4,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CategoryDTO">
 
-	<select id="selectCTNM" resultType="com.dto.CategoryDTO">
+	<select id="selectAll" resultType="com.dto.CategoryDTO">
 	select ctnm, ctno
 	from category
-	
 	</select>
-
+	
+	<select id="selectCTNM" resultType="com.dto.CategoryDTO" parameterType="int">
+	select ctnm, ctno
+	from category
+	where ctno= #{ctno}
+	</select>
 </mapper>
