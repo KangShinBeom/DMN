@@ -6,6 +6,7 @@
 <%
 	CategoryService cservice = new CategoryService();
 	List<CategoryDTO> ctnm = cservice.selectAll();
+	//a
 %>
 <!DOCTYPE html>
 <html>
