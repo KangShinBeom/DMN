@@ -1,0 +1,147 @@
+@charset "UTF-8";
+	img{
+		width: 170px;
+		height: 170px;
+	}
+	.menu_info{
+		width: 160px;
+		height: 55px;
+		text-align: center;
+		word-break: break-all;
+		font-size: 16px;
+		font-family: 'Noto Sans KR', sans-serif;
+		position : absolute;
+		background-color : #f1f3f5;
+	}
+	.page1{
+		position :absolute;
+		top : 620px;
+		left : 920px;
+		width: 15px;
+		height: 15px;
+		border: 1px solid;		
+		border-radius : 50%;
+		background-color:  #f1f3f5;
+		cursor: pointer;
+	}
+	.page2{
+		position :absolute;
+		top : 620px;
+		left : 970px;
+		width: 15px;
+		height: 15px;
+		border: 1px solid;		
+		border-radius : 50%;
+		background-color:  #f1f3f5;
+		cursor: pointer;
+	}
+	#greenTeaSmoothie{/* 1 */
+		position : absolute;
+		top : 150px;
+		left: 700px;
+	}
+	#greenTeaSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 700px;
+	}
+	#strawBerryYogurtSmoothie{/* 2 */
+		position : absolute;
+		top : 150px;
+		left: 875px;
+	}
+	#strawBerryYogurtSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 875px;
+	}
+	#mangoYogurtSmoothie{/* 3 */
+		position : absolute;
+		top : 150px;
+		left: 1050px;
+	}
+	#mangoYogurtSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 1050px;
+	}
+	#mangoSmoothie{/* 4 */
+		position : absolute;
+		top : 380px;
+		left: 700px;
+	}
+	#mangoSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 700px;
+	}
+	#peachSmoothie{/* 5 */
+		position : absolute;
+		top : 380px;
+		left: 875px;
+	}
+	#peachSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 875px;
+	}
+	#blueBerrySmoothie{/* 6 */
+		position : absolute;
+		top : 380px;
+		left: 1050px;
+	}
+	#blueBerrySmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 1050px;
+	}
+	#yogurtSmoothie{/* 1 */
+		position : absolute;
+		top : 150px;
+		left: 700px;
+	}
+	#yogurtSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 700px;
+	}
+	#greenGrapeSmoothie{/* 2 */
+		position : absolute;
+		top : 150px;
+		left: 875px;
+	}
+	#greenGrapeSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 875px;
+	}
+	#chocoSmoothie{/* 3 */
+		position : absolute;
+		top : 150px;
+		left: 1050px;
+	}
+	#chocoSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 1050px;
+	}
+	#tomatoSmoothie{/* 4 */
+		position : absolute;
+		top : 380px;
+		left: 700px;
+	}
+	#tomatoSmoothieInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 700px;
+	}

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+	.slide{
+		width: 510px;
+		height: auto;
+		display: block;
+		margin: auto;
+	}
+	.btn1{
+		background-color : transparent;
+		position: fixed;
+  		top: 830px;
+  		left : 717px;
+  		border: none;
+  		cursor: pointer;
+	}
+	.btn2{
+		background-color : transparent;
+		position: fixed;
+  		top: 830px;
+  		left : 960px;
+  		border: none; 
+  		cursor: pointer;
+	}
+	.button1{
+		width: 230px;
+		height: auto;
+	}
+	.button2{
+		width: 230px;
+		height: auto;
+	}

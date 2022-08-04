@@ -1,0 +1,211 @@
+@charset "UTF-8";
+	img{
+		width: 170px;
+		height: 170px;
+	}
+	.menu_info{
+		width: 160px;
+		height: 55px;
+		text-align: center;
+		word-break: break-all;
+		font-size: 16px;
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	.page1{
+		position :absolute;
+		top : 620px;
+		left : 920px;
+		width: 15px;
+		height: 15px;
+		border: 1px solid;		
+		border-radius : 50%;
+		background-color:  #f1f3f5;
+		cursor: pointer;
+	}
+	.page2{
+		position :absolute;
+		top : 620px;
+		left : 945px;
+		width: 15px;
+		height: 15px;
+		border: 1px solid;		
+		border-radius : 50%;
+		background-color:  #f1f3f5;
+		cursor: pointer;
+	}
+	.page3{
+		position :absolute;
+		top : 620px;
+		left : 970px;
+		width: 15px;
+		height: 15px;
+		border: 1px solid;		
+		border-radius : 50%;
+		background-color:  #f1f3f5;
+		cursor: pointer;
+	}
+	#redVelvetStickCake{/* 1 */
+		position : absolute;
+		top : 150px;
+		left: 700px;
+	}
+	#redVelvetStickCakeInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 700px;
+	}
+	#chocolateStickCake{/* 2 */
+		position : absolute;
+		top : 150px;
+		left: 875px;
+	}
+	#chocolateStickCakeInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 875px;
+	}
+	#cheeseStickCake{/* 3 */
+		position : absolute;
+		top : 150px;
+		left: 1050px;
+	}
+	#cheeseStickCakeInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 1050px;
+	}
+	#tiramisuStickCake{/* 4 */
+		position : absolute;
+		top : 380px;
+		left: 700px;
+	}
+	#tiramisuStickCakeInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 700px;
+	}
+	#honeyBread{/* 5 */
+		position : absolute;
+		top : 380px;
+		left: 875px;
+	}
+	#honeyBreadInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 875px;
+	}
+	#greenTeaMacaron{/* 6 */
+		position : absolute;
+		top : 380px;
+		left: 1050px;
+	}
+	#greenTeaMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 1050px;
+	}
+	#strawberryMacaron{/* 1 */
+		position : absolute;
+		top : 150px;
+		left: 700px;
+	}
+	#strawberryMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 700px;
+	}
+	#mintMacaron{/* 2 */
+		position : absolute;
+		top : 150px;
+		left: 875px;
+	}
+	#mintMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 875px;
+	}
+	#vanillaMacaron{/* 3 */
+		position : absolute;
+		top : 150px;
+		left: 1050px;
+	}
+	#vanillaMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 1050px;
+	}
+	#blueBerryMacaron{/* 4 */
+		position : absolute;
+		top : 380px;
+		left: 700px;
+	}
+	#blueBerryMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 700px;
+	}
+	#unicornMacaron{/* 5 */
+		position : absolute;
+		top : 380px;
+		left: 875px;
+	}
+	#unicornMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 875px;
+	}
+	#injeolmiMacaron{/* 6 */
+		position : absolute;
+		top : 380px;
+		left: 1050px;
+	}
+	#injeolmiMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 550px;
+		left : 1050px;
+	}
+	#grapeFruitMacaron{/* 1 */
+		position : absolute;
+		top : 150px;
+		left: 700px;
+	}
+	#grapeFruitMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 700px;
+	}
+	#chocoMacaron{/* 2 */
+		position : absolute;
+		top : 150px;
+		left: 875px;
+	}
+	#chocoMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 875px;
+	}
+	#peachMacaron{/* 3 */
+		position : absolute;
+		top : 150px;
+		left: 1050px;
+	}
+	#peachMacaronInfo{
+		position : absolute;
+		background-color : #f1f3f5;
+		top : 320px;
+		left : 1050px;
+	}
