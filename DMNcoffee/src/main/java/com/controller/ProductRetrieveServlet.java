@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.CategoryDTO;
+import com.dto.OptionDTO;
 import com.dto.ProductDTO;
 import com.service.CategoryService;
+import com.service.OptionService;
 import com.service.ProductService;
 
 /**
@@ -44,8 +47,14 @@ public class ProductRetrieveServlet extends HttpServlet {
 		CategoryService cservice = new CategoryService();
 		CategoryDTO cdto = cservice.selectCTNM(ctno);
 		
+//		int optno = Integer.parseInt(request.getParameter("optno"));
+//		OptionService oservice = new OptionService();
+//		List<OptionDTO> odto = oservice.selectOPT(ctno);
+		
+		
 		request.setAttribute("ProductRetrieve", pdto);
 		request.setAttribute("CategoryRetrieve", cdto);
+//		request.setAttribute("Option", odto);
 	 
 		RequestDispatcher dis = request.getRequestDispatcher("ProductRetrieve.jsp");
 		dis.forward(request, response);

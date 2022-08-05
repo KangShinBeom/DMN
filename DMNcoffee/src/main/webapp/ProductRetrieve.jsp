@@ -1,3 +1,7 @@
+<%@page import="com.service.OptionService"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.dto.OptionDTO"%>
+<%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.dto.ProductDTO"%>
@@ -8,8 +12,14 @@
 	
 	String pdnm = pdto.getPdnm();
 	int pdprice = pdto.getPdprice();
-	
+	int ctno = cdto.getCtno();
 	String ctnm = cdto.getCtnm();
+	System.out.println(ctno);
+	
+	OptionService oservice = new OptionService();
+	List<OptionDTO> odto = oservice.selectOPT(ctno);
+	
+	String optname = odto.get(ctno).getOptname();
 	
 %>
 <!DOCTYPE html>
@@ -18,16 +28,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ProductRetrieve.css">
-<script type="text/javascript">
-	function doOpenCheck(chk){
-	    var obj = document.getElementsByName("ice");
-	    for(var i=0; i<obj.length; i++){
-	        if(obj[i] != chk){
-	            obj[i].checked = false;
-	        }
-	    }
-	}
-</script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
 <header>
@@ -46,42 +47,70 @@
 	</tr>
 	<tr>
 		<td style="font-size: 20px; text-align: center;">
-			￦<%= pdprice %>
+			￦<%= pdprice %><%= optname %>
 		</td>
 	</tr>
 </table>
 <hr>
-<div class="accordion">
-	<input type="checkbox" id="opt1">
-	<label for="opt1">무료옵션<em></em></label>
-	<div style="width: 100%; height: 60px; position: absolute;">
-		<input type="checkbox" id="cb1" name="ice" value="1">
-	    <label for="cb1" style="background-image: url('image/menu/옵션/얼음적게.png'); margin-top: 3px;" onclick="doOpenCheck(this);"></label>
-	    <input type="checkbox" id="cb2" name="ice" value="2" checked="checked">
-	    <label for="cb2" style="background-image: url('image/menu/옵션/얼음보통.png');" onclick="doOpenCheck(this);"></label>
-	    <input type="checkbox" id="cb3" name="ice" value="3">
-	    <label for="cb3" style="background-image: url('image/menu/옵션/얼음많게.png');" onclick="doOpenCheck(this);"></label>
-	</div>
-	<input type="checkbox" id="opt2">
-	<label for="opt2" style="margin-top: 60px;">유료옵션<em></em></label>
-	<div style="height: 60px;">
-		<input type="checkbox" name=paidopt id="cb4">
-		<label for="cb4" style="background-image: url('image/menu/옵션/샷추가.png'); margin-top: 3px;"></label>
-		<input type="checkbox" name=paidopt id="cb5">
-		<label for="cb5" style="background-image: url('image/menu/옵션/휘핑크림.png');"></label>
-		<input type="checkbox" name=paidopt id="cb6">
-		<label for="cb6" style="background-image: url('image/menu/옵션/바닐라시럽.png');"></label>
-		<input type="checkbox" name=paidopt id="cb7">
-		<label for="cb7" style="background-image: url('image/menu/옵션/헤이즐넛시럽.png');"></label>
-	</div>
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+        무료옵션
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo" style="position: absolute;">
+      <div class="accordion-body" style="padding: 7px; height: 70px;">
+      	
+      	<div class="btn-group btn-group-lg" role="group" aria-label="Basic radio toggle button group">
+		  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnradio1">얼음적게</label>
+		
+		  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+		  <label class="btn btn-outline-primary" for="btnradio2">얼음보통</label>
+		
+		  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnradio3">얼음많이</label>
+		</div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item" style="margin-top: 60px; position: absolute; width: 100%; border-top: 1px outset;">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+       유료옵션
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body"  style="height:70px; padding: 7px;">
+      
+      	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+		  <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btncheck1">샷 추가(+500원)</label>
+		
+		  <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btncheck2">휘핑크림(+500원)</label>
+		
+		  <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btncheck3">바닐라시럽(+500원)</label>
+		  
+		  <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btncheck4">헤이즐넛시럽(+500원)</label>
+		</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div style="margin-top: 80%;">
-<button style="margin-left: 50px; width: 150px; font-size: 20px; border: 1px solid; border-radius: 10px; height: 50px;">취소하기</button>
-<button style="margin-left: 40px; width: 150px; font-size: 20px; border: 1px solid; border-radius: 10px; height: 50px;">장바구니 담기</button>
-</div>
 
 
 
+
+<button type="button" class="btn btn-primary btn-lg" style="margin-top: 300px; margin-left: 50px; width: 165px;">장바구니 담기</button>
+<button type="button" class="btn btn-secondary btn-lg" style="margin-top: 300px; margin-left: 10px; width: 165px;">취소하기</button>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
