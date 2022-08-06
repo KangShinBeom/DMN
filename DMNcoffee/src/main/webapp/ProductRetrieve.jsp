@@ -12,15 +12,24 @@
 	
 	String pdnm = pdto.getPdnm();
 	int pdprice = pdto.getPdprice();
-	int ctno = cdto.getCtno();
+	int ctno = pdto.getCtno();
 	String ctnm = cdto.getCtnm();
 	System.out.println(ctno);
+	
 	
 	OptionService oservice = new OptionService();
 	List<OptionDTO> odto = oservice.selectOPT(ctno);
 	
+	int i = 0;
 	String optname = odto.get(ctno).getOptname();
+	int optprice = odto.get(ctno).getOptprice();
 	
+	
+		for(i=0; i < odto.size(); i++) {
+			if(odto.get(i).getOptprice() == 0){
+				System.out.println(odto.get(i).getOptname());
+		}
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -47,7 +56,7 @@
 	</tr>
 	<tr>
 		<td style="font-size: 20px; text-align: center;">
-			￦<%= pdprice %><%= optname %>
+			￦<%= pdprice %>
 		</td>
 	</tr>
 </table>
@@ -63,15 +72,17 @@
     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo" style="position: absolute;">
       <div class="accordion-body" style="padding: 7px; height: 70px;">
       	
-      	<div class="btn-group btn-group-lg" role="group" aria-label="Basic radio toggle button group">
-		  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-		  <label class="btn btn-outline-primary" for="btnradio1">얼음적게</label>
-		
-		  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+      	<div class="btn-group btn-group-md" role="group" aria-label="Basic radio toggle button group">
+      	<%  for(i=0; i<odto.size(); i++) { 
+      			if(odto.get(i).getOptprice()==0){%>
+		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnradio<%=i %>"><%= odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
+		<% } else{} }%>
+		 <!--  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
 		  <label class="btn btn-outline-primary" for="btnradio2">얼음보통</label>
 		
 		  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-		  <label class="btn btn-outline-primary" for="btnradio3">얼음많이</label>
+		  <label class="btn btn-outline-primary" for="btnradio3">얼음많이</label> -->
 		</div>
       </div>
     </div>
@@ -86,17 +97,23 @@
       <div class="accordion-body"  style="height:70px; padding: 7px;">
       
       	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-		  <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-		  <label class="btn btn-outline-primary" for="btncheck1">샷 추가(+500원)</label>
+		  
+		  <%  for(i=0; i<odto.size(); i++) { 
+	      			if(odto.get(i).getOptprice()!=0){%>
+			 <input type="checkbox" class="btn-check" id="btncheck<%=i %>" autocomplete="off">
+		 	 <label class="btn btn-outline-primary" for="btncheck<%=i%>"><%=odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
+		  <% } else{} }%>
+		  
+		  
 		
-		  <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+		  <!-- <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
 		  <label class="btn btn-outline-primary" for="btncheck2">휘핑크림(+500원)</label>
 		
 		  <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
 		  <label class="btn btn-outline-primary" for="btncheck3">바닐라시럽(+500원)</label>
 		  
 		  <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-		  <label class="btn btn-outline-primary" for="btncheck4">헤이즐넛시럽(+500원)</label>
+		  <label class="btn btn-outline-primary" for="btncheck4">헤이즐넛시럽(+500원)</label> -->
 		</div>
       </div>
     </div>

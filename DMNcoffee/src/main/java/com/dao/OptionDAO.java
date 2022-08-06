@@ -9,7 +9,7 @@ import com.dto.OptionDTO;
 public class OptionDAO {
 
 	public List<OptionDTO> selectOPT(SqlSession session, int ctno) {
-		List<OptionDTO> list = session.selectOne("selectOPT",ctno);
+		List<OptionDTO> list = session.selectList("selectOPT",ctno);
 		return list;
 	}
 
