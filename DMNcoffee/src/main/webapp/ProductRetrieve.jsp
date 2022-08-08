@@ -23,7 +23,7 @@
 	int i = 0;
 	String optname = odto.get(ctno).getOptname();
 	int optprice = odto.get(ctno).getOptprice();
-	
+	int sumprice = pdprice + optprice;
 	
 		for(i=0; i < odto.size(); i++) {
 			if(odto.get(i).getOptprice() == 0){
@@ -56,7 +56,7 @@
 	</tr>
 	<tr>
 		<td style="font-size: 20px; text-align: center;">
-			￦<%= pdprice %>
+			￦<%= sumprice %>
 		</td>
 	</tr>
 </table>
@@ -74,10 +74,11 @@
       	
       	<div class="btn-group btn-group-md" role="group" aria-label="Basic radio toggle button group">
       	<%  for(i=0; i<odto.size(); i++) { 
-      			if(odto.get(i).getOptprice()==0){%>
+      			if(odto.get(i).getOptprice()==0){
+      				if(odto.get(i).getOptname()!=null){%>
 		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off">
-		  <label class="btn btn-outline-primary" for="btnradio<%=i %>"><%= odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
-		<% } else{} }%>
+		  <label class="btn btn-outline-primary" for="btnradio<%=i %>" style="width: 130px; height: 50px; line-height: 130%;"><%= odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
+		<% }}}%>
 		 <!--  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
 		  <label class="btn btn-outline-primary" for="btnradio2">얼음보통</label>
 		
@@ -93,7 +94,7 @@
        유료옵션
       </button>
     </h2>
-    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree"  style="overflow-x: scroll;">
       <div class="accordion-body"  style="height:70px; padding: 7px;">
       
       	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
@@ -101,7 +102,7 @@
 		  <%  for(i=0; i<odto.size(); i++) { 
 	      			if(odto.get(i).getOptprice()!=0){%>
 			 <input type="checkbox" class="btn-check" id="btncheck<%=i %>" autocomplete="off">
-		 	 <label class="btn btn-outline-primary" for="btncheck<%=i%>"><%=odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
+		 	 <label class="btn btn-outline-primary" for="btncheck<%=i%>"  style="width: 130px; height: 50px; line-height: 130%;"><%=odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		  <% } else{} }%>
 		  
 		  
@@ -124,8 +125,8 @@
 
 
 
-<button type="button" class="btn btn-primary btn-lg" style="margin-top: 300px; margin-left: 50px; width: 165px;">장바구니 담기</button>
-<button type="button" class="btn btn-secondary btn-lg" style="margin-top: 300px; margin-left: 10px; width: 165px;">취소하기</button>
+<button type="button" class="btn btn-primary btn-lg" style="margin-top: 300px; margin-left: 50px; width: 165px;" onclick="window.close(); location.href='OptionServlet'">장바구니 담기</button>
+<button type="button" class="btn btn-secondary btn-lg" style="margin-top: 300px; margin-left: 10px; width: 165px;" onclick="window.close()">취소하기</button>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

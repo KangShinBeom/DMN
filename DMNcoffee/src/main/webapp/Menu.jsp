@@ -115,13 +115,14 @@ $(document).ready(function() {
 	<div id="menu"></div>
 	
 	<!-- 장바구니  이미지 교체하기 구현하기   -->
-	<div class="slidebox" style="background-color: #f1f3f5;">
-	<img src="image/utility/장바구니.png" style="size: 40%; position: absolute; margin-left: 70px; margin-top: 10px;">
-			<input type="radio" name="slide" id="slide01" checked>
+	<div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">
+	<jsp:include page="Cart.jsp"></jsp:include>
+	<!-- <img src="image/utility/장바구니.png" style="size: 40%; position: absolute; margin-left: 70px; margin-top: 10px;"> -->
+			<!-- <input type="radio" name="slide" id="slide01" checked>
 			<input type="radio" name="slide" id="slide02">
 			<input type="radio" name="slide" id="slide03">
 			<input type="radio" name="slide" id="slide04">
-			<!-- <ul class="slidelist">
+			<ul class="slidelist">
 				<li class="slideitem">
 					<a><img src="image/menu/커피(ICE)/아이스 아메리카노.png"></a>
 				</li>
