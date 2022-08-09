@@ -23,11 +23,8 @@
 	int i = 0;
 	String optname = odto.get(ctno).getOptname();
 	int optprice = odto.get(ctno).getOptprice();
-//	int sumprice = pdprice + optprice;
+	int sumprice = pdprice + optprice;
 	
-	
-	session.setAttribute("Option", odto);
-
 		for(i=0; i < odto.size(); i++) {
 			if(odto.get(i).getOptprice() == 0){
 				System.out.println(odto.get(i).getOptname());
@@ -41,7 +38,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ProductRetrieve.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
 </head>
 <body>
 <header>
@@ -49,7 +45,6 @@
 	<h2>옵션 선택</h2>
 	<hr>
 </header>
-<form name=form1> 
 <table>
 	<tr>
 		<td rowspan="2">
@@ -61,10 +56,11 @@
 	</tr>
 	<tr>
 		<td style="font-size: 20px; text-align: center;">
-			￦<input type="text" name="sum" style="text-align: center; border: 0px; width: 100px;" value="<%=pdprice%>">
+			￦<%= sumprice %>
 		</td>
 	</tr>
 </table>
+<hr>
 
 <div class="accordion" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">
@@ -83,12 +79,15 @@
 		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off">
 		  <label class="btn btn-outline-primary" for="btnradio<%=i %>" style="width: 130px; height: 50px; line-height: 130%;"><%= odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		<% }}}%>
+		 <!--  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+		  <label class="btn btn-outline-primary" for="btnradio2">얼음보통</label>
+		
+		  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnradio3">얼음많이</label> -->
 		</div>
       </div>
     </div>
   </div>
-  
-
   <div class="accordion-item" style="margin-top: 60px; position: absolute; width: 100%; border-top: 1px outset;">
     <h2 class="accordion-header" id="panelsStayOpen-headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
@@ -102,15 +101,26 @@
 		  
 		  <%  for(i=0; i<odto.size(); i++) { 
 	      			if(odto.get(i).getOptprice()!=0){%>
-			 <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptprice()%>" onclick="sumchk(this)">
+			 <input type="checkbox" class="btn-check" id="btncheck<%=i %>" autocomplete="off">
 		 	 <label class="btn btn-outline-primary" for="btncheck<%=i%>"  style="width: 130px; height: 50px; line-height: 130%;"><%=odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		  <% } else{} }%>
+		  
+		  
+		
+		  <!-- <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btncheck2">휘핑크림(+500원)</label>
+		
+		  <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btncheck3">바닐라시럽(+500원)</label>
+		  
+		  <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btncheck4">헤이즐넛시럽(+500원)</label> -->
 		</div>
       </div>
     </div>
   </div>
 </div>
-</form> 
+
 
 
 
@@ -118,19 +128,7 @@
 <button type="button" class="btn btn-primary btn-lg" style="margin-top: 300px; margin-left: 50px; width: 165px;" onclick="window.close(); location.href='OptionServlet'">장바구니 담기</button>
 <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 300px; margin-left: 10px; width: 165px;" onclick="window.close()">취소하기</button>
 
-<script>
-	function sumchk(val){
-	ans=document.form1.sum.value
-	if (isNaN(ans)==true) {ans=""}
-	if (val.checked==true){
-	d=(ans/1)+(val.value/1)
-	}
-	else{
-	d=(ans/1)-(val.value/1)
-	}
-	document.form1.sum.value=d
-	}
-</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

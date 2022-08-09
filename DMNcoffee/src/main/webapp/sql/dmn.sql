@@ -145,32 +145,47 @@ insert into member VALUES (2022000009,'박서준',01012340009,'abcde1009@gmail.c
 --스무디 : 덜달게,시럽추가,휘핑크림
 --논카페 :덜달게,시럽추가,얼음많이,얼음적게,휘핑크림    
 
+--CATEGORY 1[디저트] INSERT
+insert into OPT VALUES (11,null,0,01);
+insert into OPT VALUES (12,null,0,01);
+
+
 --CATEGORY 2[논카페] INSERT
 insert into OPT VALUES (21,'덜달게',0,02);
-insert into OPT VALUES (22,'시럽추가',500,02);
-insert into OPT VALUES (23,'얼음많이',0,02);
-insert into OPT VALUES (24,'얼음적게',0,02);
-insert into OPT VALUES (25,'휘핑크림',500,02);
+insert into OPT VALUES (22,'슈가시럽',500,02);
+insert into OPT VALUES (23,'바닐라시럽',500,02);
+insert into OPT VALUES (24,'카라멜시럽',500,02);
+insert into OPT VALUES (25,'헤이즐넛시럽',500,02);
+
+--CATEGORY 3[디카페] INSERT
+insert into OPT VALUES (31,null,0,03);
+insert into OPT VALUES (32,null,0,03);
+insert into OPT VALUES (33,null,0,03);
+insert into OPT VALUES (34,null,0,03);
+
 
 --CATEGORY 4[스무디] INSERT
 insert into OPT VALUES (41,'덜달게',0,04);
 insert into OPT VALUES (42,'시럽추가',500,04);
 insert into OPT VALUES (43,'휘핑크림',500,04);
+insert into OPT VALUES (44,null,0,04);
+insert into OPT VALUES (45,null,0,04);
+
 
 --CATEGORY 5[커피(HOT)] INSERT
 insert into OPT VALUES (51,'샷추가',500,05);
-insert into OPT VALUES (52,'슈가시럽 추가',500,05);
-insert into OPT VALUES (53,'바닐라시럽 추가',500,05);
-insert into OPT VALUES (54,'카라멜시럽 추가',500,05);
-insert into OPT VALUES (55,'헤이즐넛시럽 추가',500,05);
+insert into OPT VALUES (52,'슈가시럽',500,05);
+insert into OPT VALUES (53,'바닐라시럽',500,05);
+insert into OPT VALUES (54,'카라멜시럽',500,05);
+insert into OPT VALUES (55,'헤이즐넛시럽',500,05);
 insert into OPT VALUES (56,'연하게',0,05);
 
 --CATEGORY 6[커피(ICE)] INSERT
 insert into OPT VALUES (61,'샷추가',500,06);
-insert into OPT VALUES (62,'슈가시럽 추가',500,06);
-insert into OPT VALUES (63,'바닐라시럽 추가',500,06);
-insert into OPT VALUES (64,'카라멜시럽 추가',500,06);
-insert into OPT VALUES (65,'헤이즐넛시럽 추가',500,06);
+insert into OPT VALUES (62,'슈가시럽',500,06);
+insert into OPT VALUES (63,'바닐라시럽',500,06);
+insert into OPT VALUES (64,'카라멜시럽',500,06);
+insert into OPT VALUES (65,'헤이즐넛시럽',500,06);
 insert into OPT VALUES (66,'연하게',0,06);
 insert into OPT VALUES (67,'얼음많이',0,06);
 insert into OPT VALUES (68,'얼음적게',0,06);
