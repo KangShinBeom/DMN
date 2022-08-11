@@ -26,15 +26,13 @@
 //	int sumprice = pdprice + optprice;
 	
 	
-	
+	session.setAttribute("Option", odto);
 
-//	session.setAttribute("Option", odto);
-
-		/* for(i=0; i < odto.size(); i++) {
+		for(i=0; i < odto.size(); i++) {
 			if(odto.get(i).getOptprice() == 0){
 				System.out.println(odto.get(i).getOptname());
 		}
-	} */
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -43,42 +41,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ProductRetrieve.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-	function getCheckboxValue()  {
-		  // 선택된 목록 가져오기
-		  const query = 'input[name="btnradio"]:checked';
-		  const selectedEls = 
-		      document.querySelectorAll(query);
-		  
-		  // 선택된 목록에서 value 찾기
-		  let result = '';
-		  selectedEls.forEach((el) => {
-		    result += el.value + ' ';
-		  });
-		  
-		  // 출력
-		  document.getElementById('result').innerText
-		    = result;
-	}
-	
-	function getCheckboxValue2()  {
-		  // 선택된 목록 가져오기
-		  const query = 'input[name="btncheck"]:checked';
-		  const selectedEls = 
-		      document.querySelectorAll(query);
-		  
-		  // 선택된 목록에서 value 찾기
-		  let result = '';
-		  selectedEls.forEach((el) => {
-		    result += el.value + ' ';
-		  });
-		  
-		  // 출력
-		  document.getElementById('result2').innerText
-		    = result;
-	}
-</script>
+
 </head>
 <body>
 <header>
@@ -117,7 +80,7 @@
       	<%  for(i=0; i<odto.size(); i++) { 
       			if(odto.get(i).getOptprice()==0){
       				if(odto.get(i).getOptname()!=null){%>
-		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptname() %>" onclick='getCheckboxValue()'>
+		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off">
 		  <label class="btn btn-outline-primary" for="btnradio<%=i %>" style="width: 130px; height: 50px; line-height: 130%;"><%= odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		<% }}}%>
 		</div>
@@ -139,7 +102,7 @@
 		  
 		  <%  for(i=0; i<odto.size(); i++) { 
 	      			if(odto.get(i).getOptprice()!=0){%>
-			 <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptprice()%>" onclick="sumchk(this); getCheckboxValue2();">
+			 <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptprice()%>" onclick="sumchk(this)">
 		 	 <label class="btn btn-outline-primary" for="btncheck<%=i%>"  style="width: 130px; height: 50px; line-height: 130%;"><%=odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		  <% } else{} }%>
 		</div>
@@ -147,16 +110,14 @@
     </div>
   </div>
 </div>
-<div id='result' style="display: none;"></div><br>
-<div id='result2' ></div>
- 
+</form> 
 
 
 
 
-<button type="button" class="btn btn-primary btn-lg" style="margin-top: 300px; margin-left: 50px; width: 165px;" onclick=" goServlet()">장바구니 담기</button>
+<button type="button" class="btn btn-primary btn-lg" style="margin-top: 300px; margin-left: 50px; width: 165px;" onclick="window.close(); location.href='OptionServlet'">장바구니 담기</button>
 <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 300px; margin-left: 10px; width: 165px;" onclick="window.close()">취소하기</button>
-</form>
+
 <script>
 	function sumchk(val){
 	ans=document.form1.sum.value
@@ -168,13 +129,6 @@
 	d=(ans/1)-(val.value/1)
 	}
 	document.form1.sum.value=d
-	}
-	
-	
-	function goServlet() {
-		<% request.setAttribute("pdnm", pdnm);%>
-		location.href="OptionServlet";
-		window.close();
 	}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
