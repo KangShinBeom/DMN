@@ -7,18 +7,22 @@
 <%@ page import="com.dto.ProductDTO"%>
 <%@ page import="com.dto.CategoryDTO"%>
 <%
-	ProductDTO pdto = (ProductDTO)request.getAttribute("ProductRetrieve");
-	CategoryDTO cdto = (CategoryDTO)request.getAttribute("CategoryRetrieve");
+	ProductDTO pdto = (ProductDTO)session.getAttribute("ProductRetrieve");
+	CategoryDTO cdto = (CategoryDTO)session.getAttribute("CategoryRetrieve");
 	
 	String pdnm = pdto.getPdnm();
 	int pdprice = pdto.getPdprice();
+	int pdno = pdto.getPdno();
 	int ctno = pdto.getCtno();
 	String ctnm = cdto.getCtnm();
-	System.out.println(ctno);
+	System.out.println(pdno);
 	
 	
 	OptionService oservice = new OptionService();
 	List<OptionDTO> odto = oservice.selectOPT(ctno);
+	
+	HttpSession session2 = request.getSession();
+	session2.setAttribute("odto", odto);
 	
 	int i = 0;
 	String optname = odto.get(ctno).getOptname();
@@ -154,9 +158,11 @@
 
 
 
-<button type="button" class="btn btn-primary btn-lg" style="margin-top: 300px; margin-left: 50px; width: 165px;" onclick=" goServlet()">장바구니 담기</button>
+<button type="button" class="btn btn-primary btn-lg" id="cartbtn" style="margin-top: 300px; margin-left: 50px; width: 165px;" onclick="location.href='OptionServlet'; window.close();">장바구니 담기</button>
 <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 300px; margin-left: 10px; width: 165px;" onclick="window.close()">취소하기</button>
+<input type="hidden" id="pdno">
 </form>
+
 <script>
 	function sumchk(val){
 	ans=document.form1.sum.value
@@ -171,11 +177,6 @@
 	}
 	
 	
-	function goServlet() {
-		<% request.setAttribute("pdnm", pdnm);%>
-		location.href="OptionServlet";
-		window.close();
-	}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

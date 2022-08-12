@@ -115,7 +115,8 @@ $(document).ready(function() {
 	<div id="menu"></div>
 	
 	<!-- 장바구니  이미지 교체하기 구현하기   -->
-	<div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">
+	<jsp:include page="miniCart.jsp"></jsp:include>
+	<%-- <div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">
 	<jsp:include page="Cart.jsp"></jsp:include>
 	<!-- <img src="image/utility/장바구니.png" style="size: 40%; position: absolute; margin-left: 70px; margin-top: 10px;"> -->
 			<!-- <input type="radio" name="slide" id="slide01" checked>
@@ -157,9 +158,9 @@ $(document).ready(function() {
 			</div> -->
 	</div>
 	<div class = "payANDdelete">
-	<button id="payment">결제하기</button><br>
+	<button id="payment" onclick="location.href='Cart.jsp'">결제하기</button><br>
 	<button id="deleteAll">전체취소하기</button>
-	</div>
+	</div> --%>
 </body>
 </html>	
 	

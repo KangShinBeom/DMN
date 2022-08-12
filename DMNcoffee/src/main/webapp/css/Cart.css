@@ -1,0 +1,114 @@
+@charset "UTF-8";
+	.home-icon{
+		width: 35px;
+		height: auto;
+	}
+	.home{
+		background-color : transparent;
+		position: absolute;
+  		top: 20px;
+  		left : 717px;
+  		border: none;
+  		cursor:pointer;
+	}
+	.logo{
+		width : 200px;
+		height: auto;
+		background-color : transparent;
+		position: fixed;
+  		top: 17px;
+  		left : 1000px;
+  		border: none;
+	}
+	.category button{
+		background-color: liht gray;
+		border: 1px;
+		padding : 5px;
+		width: 160px;
+		height: auto;
+		border-radius: 10px;
+		margin: 5px;
+		font-size: 20px;
+		font-family: 'Noto Sans KR', sans-serif;
+		cursor: pointer;
+	}
+	#btn2{
+		position : absolute;
+		top: 80px;
+  		left : 700px;
+	}
+	#btn3{
+		position : absolute;
+		top: 80px;
+  		left : 875px;
+	}
+	#btn4{
+		position : absolute;
+		top: 80px;
+  		left : 1050px;
+	}
+	#btn5{
+		position : absolute;
+		top: 130px;
+  		left : 700px;
+	}
+	#btn6{
+		position : absolute;
+		top: 130px;
+  		left : 875px;
+	}
+	#btn7{
+		position : absolute;
+		top: 130px;
+  		left : 1050px;
+	}
+	#menu{
+		position : absolute;
+		top: 50px;
+	}
+	
+	.payANDdelete button{
+		border: 1px solid;
+		border-radius: 10px;
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size : 20px;	
+	}
+	#payment{
+		margin-top: 700px;
+		margin-left: 15px;
+		width : 160px;
+		height: 110px;
+	}
+	#deleteAll{
+		margin-top: 15px;
+		margin-left: 15px;
+		width: 160px;
+		height: 75px;
+	}
+	
+	* {margin:0;padding:0;box-sizing:border-box;}
+		ul, li {list-style:none;}
+		
+		
+		.slidebox {max-width:510px;margin:0 auto;position:relative; border: 1px solid; border-radius:10px; width: 330px; height: 200px; margin-top: 700px; margin-left: 700px; float: left; display: flex;}
+		.slidebox .slidelist {position:relative;white-space:nowrap;font-size:0;overflow:hidden;}
+		.slidebox .slidelist .slideitem {position:relative;display:inline-block;vertical-align:middle;width:50%;transition:all 1s;}
+		.slidebox .slidelist .slideitem > a {display:block;width:auto;position:relative;}
+		.slidebox .slidelist .slideitem > a img {max-width:100%;}
+		
+		.slidebox .slide-control [class*="control"] label {position:absolute;z-index:10;top:90%;transform:translateY(-50%);padding:20px;border-radius:50%;cursor:pointer;}
+		.slidebox .slide-control [class*="control"] label.prev {left:0px; background:#333 url('../image/utility/left-arrow.png') center center / 50% no-repeat;}
+		.slidebox .slide-control [class*="control"] label.next {right:0px; background:#333 url('../image/utility/right-arrow.png') center center / 50% no-repeat;}
+		
+		[name="slide"] {display:none;}
+		#slide01:checked ~ .slidelist .slideitem {left:0;}
+		#slide02:checked ~ .slidelist .slideitem {left:-75%;}
+		#slide03:checked ~ .slidelist .slideitem {left:-150%;}
+		#slide04:checked ~ .slidelist .slideitem {left:-225%;}
+		
+		.slide-control [class*="control"] {display:none;}
+		#slide01:checked ~ .slide-control .control01 {display:block;}
+		#slide02:checked ~ .slide-control .control02 {display:block;}
+		#slide03:checked ~ .slide-control .control03 {display:block;}
+		#slide04:checked ~ .slide-control .control04 {display:block;}
+	

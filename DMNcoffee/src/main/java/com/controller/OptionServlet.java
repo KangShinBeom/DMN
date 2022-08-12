@@ -16,6 +16,8 @@ import javax.websocket.Session;
 import com.dto.CategoryDTO;
 import com.dto.OptionDTO;
 import com.dto.ProductDTO;
+import com.service.CategoryService;
+import com.service.ProductService;
 
 @WebServlet("/OptionServlet")
 public class OptionServlet extends HttpServlet {
@@ -24,15 +26,19 @@ public class OptionServlet extends HttpServlet {
     public OptionServlet() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		
-		String pdnm = (String) request.getAttribute("pdnm");
+		HttpSession session = request.getSession();
 		
-		System.out.println("OptionServlet 로딩성공");
+		ProductDTO pdto = (ProductDTO) session.getAttribute("pdto");
+//		OptionDTO odto = (OptionDTO) session.getAttribute("odto");
+		
+		
+		String pdnm = pdto.getPdnm();
+		
 		System.out.println(pdnm);
 		
-		RequestDispatcher dis = request.getRequestDispatcher("Cart.jsp");
-		dis.forward(request, response);
-		
+		response.sendRedirect("miniCart.jsp");
 		
 	}
 
