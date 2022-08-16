@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,16 +31,39 @@ public class OptionServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		ProductDTO pdto = (ProductDTO) session.getAttribute("pdto");
-//		OptionDTO odto = (OptionDTO) session.getAttribute("odto");
+		int pdno = Integer.parseInt(request.getParameter("pdno"));
+		System.out.println(pdno);
+		
+		ProductService pservice = new ProductService();
+		ProductDTO pdto1 = pservice.selectPDNO(pdno);
+		
+		int ctno = pdto1.getCtno();
+		CategoryService cservice = new CategoryService();
+		CategoryDTO cdto1 = cservice.selectCTNM(ctno);
+		
+		String[] opt1 = request.getParameterValues("result");
+		String[] opt2 = request.getParameterValues("result2");
 		
 		
-		String pdnm = pdto.getPdnm();
+		System.out.println(opt1);
+		System.out.println(opt2);
+//		request.setAttribute("ProductOption", pdto1);
+//		request.setAttribute("CategoryOption", cdto1);
+//		request.setAttribute("Option", odto);
+	 
 		
-		System.out.println(pdnm);
 		
-		response.sendRedirect("miniCart.jsp");
+		PrintWriter out = response.getWriter(); //선언
+		   
+		   String str="";
+		   str = "<script language='javascript'>";
+		   str += "opener.window.location.reload();";  //오프너 새로고침
+		   str += "self.close();";   // 창닫기
+		    str += "</script>";
+		   out.print(str);
 		
+//		   RequestDispatcher dis2 = request.getRequestDispatcher("miniCart.jsp");
+//			dis2.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

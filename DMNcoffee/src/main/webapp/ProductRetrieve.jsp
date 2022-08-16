@@ -7,8 +7,8 @@
 <%@ page import="com.dto.ProductDTO"%>
 <%@ page import="com.dto.CategoryDTO"%>
 <%
-	ProductDTO pdto = (ProductDTO)session.getAttribute("ProductRetrieve");
-	CategoryDTO cdto = (CategoryDTO)session.getAttribute("CategoryRetrieve");
+	ProductDTO pdto = (ProductDTO)request.getAttribute("ProductRetrieve");
+	CategoryDTO cdto = (CategoryDTO)request.getAttribute("CategoryRetrieve");
 	
 	String pdnm = pdto.getPdnm();
 	int pdprice = pdto.getPdprice();
@@ -21,8 +21,8 @@
 	OptionService oservice = new OptionService();
 	List<OptionDTO> odto = oservice.selectOPT(ctno);
 	
-	HttpSession session2 = request.getSession();
-	session2.setAttribute("odto", odto);
+//	HttpSession session2 = request.getSession();
+//	session2.setAttribute("odto", odto);
 	
 	int i = 0;
 	String optname = odto.get(ctno).getOptname();
@@ -82,6 +82,8 @@
 		  document.getElementById('result2').innerText
 		    = result;
 	}
+	
+	
 </script>
 </head>
 <body>
@@ -121,7 +123,7 @@
       	<%  for(i=0; i<odto.size(); i++) { 
       			if(odto.get(i).getOptprice()==0){
       				if(odto.get(i).getOptname()!=null){%>
-		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptname() %>" onclick='getCheckboxValue()'>
+		  <input type="radio" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptname() %>" onclick='getCheckboxValue()'>
 		  <label class="btn btn-outline-primary" for="btnradio<%=i %>" style="width: 130px; height: 50px; line-height: 130%;"><%= odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		<% }}}%>
 		</div>
@@ -143,7 +145,7 @@
 		  
 		  <%  for(i=0; i<odto.size(); i++) { 
 	      			if(odto.get(i).getOptprice()!=0){%>
-			 <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptprice()%>" onclick="sumchk(this); getCheckboxValue2();">
+			 <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptname()%>" onclick="sumchk(this); getCheckboxValue2();">
 		 	 <label class="btn btn-outline-primary" for="btncheck<%=i%>"  style="width: 130px; height: 50px; line-height: 130%;"><%=odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		  <% } else{} }%>
 		</div>
@@ -152,19 +154,19 @@
   </div>
 </div>
 <div id='result' style="display: none;"></div><br>
-<div id='result2' ></div>
+<div id='result2' style="display: none;"></div>
  
 
 
 
 
-<button type="button" class="btn btn-primary btn-lg" id="cartbtn" style="margin-top: 300px; margin-left: 50px; width: 165px;" onclick="location.href='OptionServlet'; window.close();">장바구니 담기</button>
+<button type="button" class="btn btn-primary btn-lg" id="cartbtn" style="margin-top: 300px; margin-left: 50px; width: 165px;" data-xxx="<%= pdno %>" onclick="goOptionServlet()">장바구니 담기</button>
 <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 300px; margin-left: 10px; width: 165px;" onclick="window.close()">취소하기</button>
 <input type="hidden" id="pdno">
 </form>
 
 <script>
-	function sumchk(val){
+	/* function sumchk(val){
 	ans=document.form1.sum.value
 	if (isNaN(ans)==true) {ans=""}
 	if (val.checked==true){
@@ -174,7 +176,15 @@
 	d=(ans/1)-(val.value/1)
 	}
 	document.form1.sum.value=d
+	} */
+	
+	function goOptionServlet() {
+		var pdno = $(this).attr("data-xxx");
+		console.log(pdno);
+		$("#pdno").val(pdno);
+		location.href="Test.jsp";
 	}
+	
 	
 	
 </script>

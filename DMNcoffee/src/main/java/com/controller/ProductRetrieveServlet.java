@@ -40,7 +40,6 @@ public class ProductRetrieveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		HttpSession session = request.getSession();
 		
 		int pdno = Integer.parseInt(request.getParameter("pdno"));
 		ProductService pservice = new ProductService();
@@ -55,8 +54,8 @@ public class ProductRetrieveServlet extends HttpServlet {
 //		List<OptionDTO> odto = oservice.selectOPT(ctno);
 		
 		
-		session.setAttribute("ProductRetrieve", pdto);
-		session.setAttribute("CategoryRetrieve", cdto);
+		request.setAttribute("ProductRetrieve", pdto);
+		request.setAttribute("CategoryRetrieve", cdto);
 //		request.setAttribute("Option", odto);
 	 
 		RequestDispatcher dis = request.getRequestDispatcher("ProductRetrieve.jsp");
