@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import com.dto.CartDTO;
 import com.dto.CategoryDTO;
 import com.dto.OptionDTO;
 import com.dto.ProductDTO;
+import com.service.CartService;
 import com.service.CategoryService;
 import com.service.ProductService;
 
@@ -31,27 +33,46 @@ public class OptionServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		int pdno = Integer.parseInt(request.getParameter("pdno"));
-		String opt2 = request.getParameter("opt2");
+		String pdno = request.getParameter("pdno");
+		String opt = request.getParameter("opt");
 		
 		System.out.println(pdno);
-		System.out.println(opt2);
- 		/*
-		 * System.out.println(pdno);
-		 * 
-		 * ProductService pservice = new ProductService(); ProductDTO pdto =
-		 * pservice.selectPDNO(pdno); System.out.println(pdto.getPdnm());
-		 * 
-		 * 
-		 * int ctno = pdto.getCtno(); CategoryService cservice = new CategoryService();
-		 * CategoryDTO cdto1 = cservice.selectCTNM(ctno);
-		 * 
-		 * String[] opt1 = request.getParameterValues("result"); String[] opt2 =
-		 * request.getParameterValues("result2");
-		 * 
-		 * 
-		 * System.out.println(opt1); System.out.println(opt2);
-		 */
+		System.out.println(opt);
+ 		
+		  
+		ProductService pservice = new ProductService(); 
+		ProductDTO pdto = pservice.selectPDNO(Integer.parseInt(pdno)); 
+		System.out.println(pdto.getPdnm());
+		  
+		  
+		int ctno = pdto.getCtno(); 
+		CategoryService cservice = new CategoryService();
+		CategoryDTO cdto1 = cservice.selectCTNM(ctno);
+		
+		
+		
+//		String pdnm = pdto.getPdnm();
+//		int amount = 1;
+//		int totalprice = pdto.getPdprice();
+//		String opt2 = null;
+		
+		
+//		CartDTO cadto = new CartDTO();
+//		cadto.setPdno(pdno);
+//		cadto.setPdnm(pdnm);
+//		cadto.setAmount(amount);
+//		cadto.setTotalprice(totalprice);
+//		cadto.setOpt1(opt);
+//		cadto.setOpt2(opt2);
+		
+		
+		
+	//	CartService caservice = new CartService();
+		
+	//	int n = caservice.cartAdd(cadto);
+		  
+		  
+		 
 //		request.setAttribute("ProductOption", pdto1);
 //		request.setAttribute("CategoryOption", cdto1);
 //		request.setAttribute("Option", odto);

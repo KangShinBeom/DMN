@@ -62,7 +62,7 @@
 			console.log(num);
 			var pdno = $(this).attr("data-xxx");
 			console.log(pdno);
-			location.href="OptionServlet?pdno="+pdno+"&opt2="+num;
+			location.href="OptionServlet?pdno="+pdno+"&opt="+num;
 		});
 		
 	})
