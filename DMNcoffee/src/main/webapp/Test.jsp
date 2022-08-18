@@ -8,9 +8,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	var pdno =opener.document.getElementById("pdno").value;
+	var pdno = document.getElementById("pdno").value;
 	
-	location.href="OptionServlet?pdno="+pdno;
+	location.href="OptionServlet?pdno="+pdno + "&data=" ;
 });		
 </script>
 <title>Insert title here</title>

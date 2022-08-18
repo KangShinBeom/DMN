@@ -32,21 +32,26 @@ public class OptionServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		int pdno = Integer.parseInt(request.getParameter("pdno"));
+		String opt2 = request.getParameter("opt2");
+		
 		System.out.println(pdno);
-		
-		ProductService pservice = new ProductService();
-		ProductDTO pdto1 = pservice.selectPDNO(pdno);
-		
-		int ctno = pdto1.getCtno();
-		CategoryService cservice = new CategoryService();
-		CategoryDTO cdto1 = cservice.selectCTNM(ctno);
-		
-		String[] opt1 = request.getParameterValues("result");
-		String[] opt2 = request.getParameterValues("result2");
-		
-		
-		System.out.println(opt1);
 		System.out.println(opt2);
+ 		/*
+		 * System.out.println(pdno);
+		 * 
+		 * ProductService pservice = new ProductService(); ProductDTO pdto =
+		 * pservice.selectPDNO(pdno); System.out.println(pdto.getPdnm());
+		 * 
+		 * 
+		 * int ctno = pdto.getCtno(); CategoryService cservice = new CategoryService();
+		 * CategoryDTO cdto1 = cservice.selectCTNM(ctno);
+		 * 
+		 * String[] opt1 = request.getParameterValues("result"); String[] opt2 =
+		 * request.getParameterValues("result2");
+		 * 
+		 * 
+		 * System.out.println(opt1); System.out.println(opt2);
+		 */
 //		request.setAttribute("ProductOption", pdto1);
 //		request.setAttribute("CategoryOption", cdto1);
 //		request.setAttribute("Option", odto);
