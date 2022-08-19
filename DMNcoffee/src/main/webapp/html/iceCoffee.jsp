@@ -24,9 +24,10 @@ $(document).ready(function(){
 		$("#pdno").val(pdno);
 		
 		window.name="Menu";
-		openWin = window.open("Option.jsp","option","width=300,height=500,resizable=no,scrollbars=no,top=120,left=475");
+		openWin = window.open("Option.jsp","option","width=450,height=700,resizable=no,scrollbars=no,top=200,left=725");
 		/* 노트북 자식창 사이즈 : "width=300,height=650,resizable=no,scrollbars=no,top=200,left=500" */
 		/* 데스크톱 자식창 사이즈 : "width=450,height=700,resizable=no,scrollbars=no,top=200,left=725" */
+		/* 신범 노트북 자식창 사이즈 : "width=300,height=500,resizable=no,scrollbars=no,top=120,left=475" */
 	});
 })	
 </script>

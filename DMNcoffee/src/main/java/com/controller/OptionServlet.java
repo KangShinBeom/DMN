@@ -18,7 +18,6 @@ import com.dto.CartDTO;
 import com.dto.CategoryDTO;
 import com.dto.OptionDTO;
 import com.dto.ProductDTO;
-import com.service.CartService;
 import com.service.CategoryService;
 import com.service.ProductService;
 
@@ -31,52 +30,32 @@ public class OptionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		HttpSession session = request.getSession();
-		
 		String pdno = request.getParameter("pdno");
-		String opt = request.getParameter("opt");
+		String opt1 = request.getParameter("opt");
 		
 		System.out.println(pdno);
-		System.out.println(opt);
+		System.out.println(opt1);
  		
 		  
 		ProductService pservice = new ProductService(); 
 		ProductDTO pdto = pservice.selectPDNO(Integer.parseInt(pdno)); 
-		System.out.println(pdto.getPdnm());
-		  
-		  
-		int ctno = pdto.getCtno(); 
-		CategoryService cservice = new CategoryService();
-		CategoryDTO cdto1 = cservice.selectCTNM(ctno);
-		
-		
-		
-//		String pdnm = pdto.getPdnm();
-//		int amount = 1;
-//		int totalprice = pdto.getPdprice();
-//		String opt2 = null;
-		
-		
-//		CartDTO cadto = new CartDTO();
-//		cadto.setPdno(pdno);
-//		cadto.setPdnm(pdnm);
-//		cadto.setAmount(amount);
-//		cadto.setTotalprice(totalprice);
-//		cadto.setOpt1(opt);
-//		cadto.setOpt2(opt2);
-		
-		
-		
-	//	CartService caservice = new CartService();
-		
-	//	int n = caservice.cartAdd(cadto);
-		  
-		  
-		 
-//		request.setAttribute("ProductOption", pdto1);
-//		request.setAttribute("CategoryOption", cdto1);
-//		request.setAttribute("Option", odto);
 	 
+		String pdnm = pdto.getPdnm();
+		int amount = 1;
+		int totalprice = pdto.getPdprice();
+		String opt2 = null;
+		
+		CartDTO cdto = new CartDTO();
+		cdto.setPdno(pdno);
+		cdto.setPdnm(pdnm);
+		cdto.setAmount(amount);
+		cdto.setTotalprice(totalprice);
+		cdto.setOpt1(opt1);
+		cdto.setOpt2(opt2);
+		
+		System.out.println(cdto);
+		
+
 		
 		
 		PrintWriter out = response.getWriter(); //선언
