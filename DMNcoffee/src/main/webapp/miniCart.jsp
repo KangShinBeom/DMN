@@ -1,17 +1,13 @@
+<%@page import="com.service.CartService"%>
 <%@page import="com.dto.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.service.*" %>
+<%@page import="java.util.List" %>
 <%
 	request.setCharacterEncoding("utf-8");
 	
-//	ProductDTO pdto1 = (ProductDTO)request.getAttribute("ProductOption");
-//	String pdnm = pdto1.getPdnm();	
 	
-//	CategoryDTO cdto1 = (CategoryDTO)request.getAttribute("CategoryOption");
-//	int ctno = cdto1.getCtno();
-	
-//	System.out.println(pdnm);
-
 %>    
 <!DOCTYPE html>
 <html>

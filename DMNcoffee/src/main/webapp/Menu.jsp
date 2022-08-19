@@ -118,7 +118,7 @@ $(document).ready(function() {
 	<!-- 장바구니  이미지 교체하기 구현하기   -->
 	<%-- <jsp:include page="miniCart.jsp"></jsp:include> --%>
 	<div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">
-	<jsp:include page="miniCart.jsp"></jsp:include>
+	<jsp:include page="miniCart.jsp" flush="true"></jsp:include>
 	<!-- <img src="image/utility/장바구니.png" style="size: 40%; position: absolute; margin-left: 70px; margin-top: 10px;"> -->
 			<!-- <input type="radio" name="slide" id="slide01" checked>
 			<input type="radio" name="slide" id="slide02">

@@ -6,8 +6,8 @@ public class CartDTO {
 	String pdnm;
 	int amount;
 	int totalprice;
-	String opt1;
-	String opt2;
+	String opt;
+	int ctno;
 	
 	
 	public CartDTO() {
@@ -16,21 +16,21 @@ public class CartDTO {
 	}
 
 
-	public CartDTO(String pdno, String pdnm, int amount, int totalprice, String opt1, String opt2) {
+	public CartDTO(String pdno, String pdnm, int amount, int totalprice, String opt, int ctno) {
 		super();
 		this.pdno = pdno;
 		this.pdnm = pdnm;
 		this.amount = amount;
 		this.totalprice = totalprice;
-		this.opt1 = opt1;
-		this.opt2 = opt2;
+		this.opt = opt;
+		this.ctno = ctno;
 	}
 
 
 	@Override
 	public String toString() {
 		return "CartDTO [pdno=" + pdno + ", pdnm=" + pdnm + ", amount=" + amount + ", totalprice=" + totalprice
-				+ ", opt1=" + opt1 + ", opt2=" + opt2 + "]";
+				+ ", opt=" + opt + ", ctno=" + ctno + "]";
 	}
 
 
@@ -74,24 +74,25 @@ public class CartDTO {
 	}
 
 
-	public String getOpt1() {
-		return opt1;
+	public String getOpt() {
+		return opt;
 	}
 
 
-	public void setOpt1(String opt1) {
-		this.opt1 = opt1;
+	public void setOpt(String opt) {
+		this.opt = opt;
 	}
 
 
-	public String getOpt2() {
-		return opt2;
+	public int getCtno() {
+		return ctno;
 	}
 
 
-	public void setOpt2(String opt2) {
-		this.opt2 = opt2;
+	public void setCtno(int ctno) {
+		this.ctno = ctno;
 	}
+	
 	
 	
 	

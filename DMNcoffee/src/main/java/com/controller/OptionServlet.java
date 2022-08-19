@@ -18,6 +18,7 @@ import com.dto.CartDTO;
 import com.dto.CategoryDTO;
 import com.dto.OptionDTO;
 import com.dto.ProductDTO;
+import com.service.CartService;
 import com.service.CategoryService;
 import com.service.ProductService;
 
@@ -31,31 +32,33 @@ public class OptionServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String pdno = request.getParameter("pdno");
-		String opt1 = request.getParameter("opt");
+		String opt = request.getParameter("opt");
 		
 		System.out.println(pdno);
-		System.out.println(opt1);
+		System.out.println(opt);
  		
 		  
 		ProductService pservice = new ProductService(); 
 		ProductDTO pdto = pservice.selectPDNO(Integer.parseInt(pdno)); 
 	 
 		String pdnm = pdto.getPdnm();
+		int ctno = pdto.getCtno();
 		int amount = 1;
 		int totalprice = pdto.getPdprice();
-		String opt2 = null;
 		
 		CartDTO cdto = new CartDTO();
 		cdto.setPdno(pdno);
 		cdto.setPdnm(pdnm);
 		cdto.setAmount(amount);
 		cdto.setTotalprice(totalprice);
-		cdto.setOpt1(opt1);
-		cdto.setOpt2(opt2);
+		cdto.setOpt(opt);
+		cdto.setCtno(ctno);
 		
 		System.out.println(cdto);
 		
-
+		CartService cservice = new CartService();
+		
+		int n = cservice.cartAdd(cdto);
 		
 		
 		PrintWriter out = response.getWriter(); //선언
