@@ -116,8 +116,8 @@ $(document).ready(function() {
 	<div id="menu"></div>
 	
 	<!-- 장바구니  이미지 교체하기 구현하기   -->
-	<%-- <jsp:include page="miniCart.jsp"></jsp:include> --%>
-	<div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">
+	<jsp:include page="miniCart.jsp"></jsp:include>
+	<%-- <div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">
 	<jsp:include page="miniCart.jsp" flush="true"></jsp:include>
 	<!-- <img src="image/utility/장바구니.png" style="size: 40%; position: absolute; margin-left: 70px; margin-top: 10px;"> -->
 			<!-- <input type="radio" name="slide" id="slide01" checked>
@@ -161,7 +161,7 @@ $(document).ready(function() {
 	<div class = "payANDdelete">
 	<button type="button" class="btn btn-primary btn-lg" id="payment" onclick="location.href='Order.jsp'">결제하기</button><br>
 	<button type="button" class="btn btn-secondary btn-lg" id="deleteAll">전체취소하기</button>
-	</div>
+	</div> --%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>	

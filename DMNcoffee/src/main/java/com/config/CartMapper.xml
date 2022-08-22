@@ -5,12 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="CartMapper">
 
    <insert id="cartAdd" parameterType="CartDTO">
-     insert into cart (pdno, pdnm, amount, totalprice, opt, ctno)
-     values(#{pdno}, #{pdnm}, #{amount}, #{totalprice}, #{opt}, #{ctno})
+     insert into cart (pdno, pdnm, amount, totalprice, opt, ctnm)
+     values(#{pdno}, #{pdnm}, #{amount}, #{totalprice}, #{opt}, #{ctnm})
    </insert>
 	
 	
-	
+	<select id="cartList" resultType="CartDTO">
+	select pdno, pdnm, amount, totalprice, opt, ctnm
+	from cart
+	</select>
 	
 	
 </mapper>

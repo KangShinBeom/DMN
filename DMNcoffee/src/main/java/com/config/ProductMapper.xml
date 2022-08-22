@@ -5,13 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="ProductDTO">
 
 	<select id="select" resultType="com.dto.ProductDTO" parameterType="int">
-	select pdno, pdnm, pdprice, ctno ,epdnm
+	select pdno, pdnm, pdprice, ctno ,epdnm, ctnm
 	from product
 	where ctno= #{ctno}
 	</select>
 	
 	<select id="selectPDNO" resultType="com.dto.ProductDTO" parameterType="int">
-	select pdno, pdnm, pdprice, ctno ,epdnm
+	select pdno, pdnm, pdprice, ctno ,epdnm, ctnm
 	from product
 	where pdno= #{pdno}
 	</select>

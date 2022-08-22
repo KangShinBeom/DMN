@@ -40,11 +40,12 @@ public class OptionServlet extends HttpServlet {
 		  
 		ProductService pservice = new ProductService(); 
 		ProductDTO pdto = pservice.selectPDNO(Integer.parseInt(pdno)); 
-	 
+		
+		
 		String pdnm = pdto.getPdnm();
-		int ctno = pdto.getCtno();
 		int amount = 1;
 		int totalprice = pdto.getPdprice();
+		String ctnm = pdto.getCtnm();
 		
 		CartDTO cdto = new CartDTO();
 		cdto.setPdno(pdno);
@@ -52,7 +53,7 @@ public class OptionServlet extends HttpServlet {
 		cdto.setAmount(amount);
 		cdto.setTotalprice(totalprice);
 		cdto.setOpt(opt);
-		cdto.setCtno(ctno);
+		cdto.setCtnm(ctnm);
 		
 		System.out.println(cdto);
 		

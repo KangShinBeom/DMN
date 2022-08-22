@@ -7,6 +7,17 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	
+	CartService cservice = new CartService();
+	List<CartDTO> list = cservice.cartList();
+	
+	
+	int i = 0;
+	
+	
+	
+//	for(i=0; i<list.size(); i++){
+//	System.out.println(pdnm);
+//	}
 	
 %>    
 <!DOCTYPE html>
@@ -18,6 +29,13 @@
 </head>
 <body>
 <div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">
+			
+			<% 
+			
+			if(list.size() != 0){
+			for(i=0; i<list.size(); i++) { %>
+			<img src="image/menu/<%=list.get(i).getCtnm()%>/<%=list.get(i).getPdnm()%>.png">
+			<% } }%>
 			<!-- <input type="radio" name="slide" id="slide01" checked>
 			<input type="radio" name="slide" id="slide02">
 			<input type="radio" name="slide" id="slide03">
