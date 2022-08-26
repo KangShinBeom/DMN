@@ -20,5 +20,10 @@ public class CartDAO {
 		return list;
 	}
 
+	public int cartAllDel(SqlSession session, List<CartDTO> list) {
+		int n = session.delete("cartAllDel", list);
+		return n;
+	}
+
 
 }

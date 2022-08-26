@@ -25,35 +25,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/miniCart.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#deleteAll").on("click",function(){
+			
+		location.href="CartDelAllServlet";
+	});
+	
+})
+	
+</script>
 </head>
 <body>
-<div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">
-			
-			<% 
-			
-			if(list.size() != 0){
-			for(i=0; i<list.size(); i++) { %>
-			<img src="image/menu/<%=list.get(i).getCtnm()%>/<%=list.get(i).getPdnm()%>.png">
-			<% } }%>
-			<!-- <input type="radio" name="slide" id="slide01" checked>
+<%-- <%if(list.size() == 0) { %>
+<div class="slidebox" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;"></div>
+<%} else { %>		 --%>	
+<div class="slidebox" id="box2" style="background-color: #f1f3f5; background-image: url('image/utility/장바구니.png'); background-size: 40%; background-repeat: no-repeat; background-position: center;">			
+<%-- <%} %>		 --%>	
+			<input type="radio" name="slide" id="slide01" checked>
 			<input type="radio" name="slide" id="slide02">
 			<input type="radio" name="slide" id="slide03">
 			<input type="radio" name="slide" id="slide04">
 			<ul class="slidelist">
+				<% 
+			
+				if(list.size() != 0){
+				for(i=0; i<list.size(); i++) { %>
+				
 				<li class="slideitem">
-					<a><img src="image/menu/커피(ICE)/아이스 아메리카노.png"></a>
-				</li>
-				<li class="slideitem">
-					<a><img src="image/menu/커피(ICE)/아이스 아메리카노.png"></a>
-				</li>
-				<li class="slideitem">
-					<a><img src="image/menu/커피(ICE)/아이스 아메리카노.png"></a>
-				</li>
-				<li class="slideitem">
-					<a><img src="image/menu/커피(ICE)/아이스 아메리카노.png"></a>
+					<a><img src="image/menu/<%=list.get(i).getCtnm()%>/<%=list.get(i).getPdnm()%>.png" style="width: 250px; height: 150px;"></a>
 				</li>
 				
+				<% } }%>
 			</ul>
 			<div class="slide-control">
 				<div class="control01">
@@ -72,7 +79,7 @@
 					<label for="slide03" class="prev"></label>
 					<label for="slide01" class="next"></label>
 				</div>
-			</div> -->
+			</div>
 	</div>
 	<div class = "payANDdelete">
 	<button type="button" class="btn btn-primary btn-lg" id="payment" onclick="location.href='Order.jsp'">결제하기</button><br>

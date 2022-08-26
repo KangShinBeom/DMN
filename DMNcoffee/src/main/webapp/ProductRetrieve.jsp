@@ -110,7 +110,7 @@
 <body>
 <header>
 	<img class="logo"src="image/utility/로고.png" style="width: 100px; height: 50px; margin-left: 330px;">
-	<h2>옵션 선택</h2>
+	<h2>&nbsp;옵션 선택</h2>
 	<hr>
 </header>
 <form name=form1> 
@@ -144,7 +144,7 @@
       	<%  for(i=0; i<odto.size(); i++) { 
       			if(odto.get(i).getOptprice()==0){
       				if(odto.get(i).getOptname()!=null){%>
-		  <input type="radio" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptname() %>" onclick='getCheckboxValue()'>
+		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptname() %>" onclick='getCheckboxValue()'>
 		  <label class="btn btn-outline-primary" for="btnradio<%=i %>" style="width: 130px; height: 50px; line-height: 130%;"><%= odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		<% }}}%>
 		</div>
