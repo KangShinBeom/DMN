@@ -124,7 +124,7 @@
 	<div class="bottom">
 		<table>
 			<tr>
-				<td><button class="btn2" onclick="location.href='Main.jsp';">전체취소</button></td>
+				<td><button class="btn2" onclick="location.href='CartDelAllServlet2';">전체취소</button></td>
 				<td><button class="btn2" onclick="location.href='Menu.jsp';">이전</button></td>
 				<td><button class="btn2" onclick="location.href='Step2.jsp';">다음</button></td>
 			</tr>

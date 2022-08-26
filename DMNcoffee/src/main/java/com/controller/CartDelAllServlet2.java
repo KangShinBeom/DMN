@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dto.CartDTO;
 import com.service.CartService;
 
-@WebServlet("/CartDelAllServlet")
+@WebServlet("/CartDelAllServlet2")
 public class CartDelAllServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
