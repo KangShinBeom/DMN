@@ -55,14 +55,17 @@
 		$("#cartbtn").on("click",function(){
 			console.log("호출됨");
 			var num=[];
+			var num2=[];
 			//$("input:checkbox[name='check']:checked").each(function(idx,ele){
 			$(".btn-check:checked").each(function(idx,ele){
-				num[idx]=$(this).val();
+				num[idx]=$(this).attr("value1");
+				num2[idx]=$(this).attr("value");
 			});
 			console.log(num);
+			console.log(num2);
 			var pdno = $(this).attr("data-xxx");
 			console.log(pdno);
-			location.href="OptionServlet?pdno="+pdno+"&opt="+num;
+			location.href="OptionServlet?pdno="+pdno+"&opt="+num+"&oprice="+num2;
 		});
 		
 	})
@@ -125,7 +128,7 @@
 	</tr>
 	<tr>
 		<td style="font-size: 20px; text-align: center;">
-			￦<%=pdprice%>
+			￦<input type="text" name="sum" id="sum" style="border: 0; text-align: center; width: 70px;" value="<%=pdprice%>" readonly>
 		</td>
 	</tr>
 </table>
@@ -144,7 +147,7 @@
       	<%  for(i=0; i<odto.size(); i++) { 
       			if(odto.get(i).getOptprice()==0){
       				if(odto.get(i).getOptname()!=null){%>
-		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptname() %>" onclick='getCheckboxValue()'>
+		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off" value1="<%=odto.get(i).getOptname() %>" value="<%=odto.get(i).getOptprice()%>">
 		  <label class="btn btn-outline-primary" for="btnradio<%=i %>" style="width: 130px; height: 50px; line-height: 130%;"><%= odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		<% }}}%>
 		</div>
@@ -166,7 +169,7 @@
 		  
 		  <%  for(i=0; i<odto.size(); i++) { 
 	      			if(odto.get(i).getOptprice()!=0){%>
-			 <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value="<%=odto.get(i).getOptname()%>">
+			 <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value1="<%=odto.get(i).getOptname()%>" value="<%=odto.get(i).getOptprice()%>" onclick="sumchk(this);">
 		 	 <label class="btn btn-outline-primary" for="btncheck<%=i%>"  style="width: 130px; height: 50px; line-height: 130%;"><%=odto.get(i).getOptname()%><br>(+￦<%=odto.get(i).getOptprice()%>)</label>
 		  <% } else{} }%>
 		</div>
@@ -186,7 +189,7 @@
 </form>
 
 <script>
-	/* function sumchk(val){
+	function sumchk(val){
 	ans=document.form1.sum.value
 	if (isNaN(ans)==true) {ans=""}
 	if (val.checked==true){
@@ -196,8 +199,8 @@
 	d=(ans/1)-(val.value/1)
 	}
 	document.form1.sum.value=d
-	} */
-	
+	/* console.log(d); */
+	}
 	
 	
 	

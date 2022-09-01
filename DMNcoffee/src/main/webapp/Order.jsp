@@ -36,7 +36,7 @@
 	})
 
 
-	function count(type)  {
+	/* function count(type)  {
 		  // 결과를 표시할 element
 		  const resultElement = document.getElementById('result');
 		  
@@ -53,7 +53,7 @@
 		  
 		  // 결과 출력
 		  resultElement.innerText = number;
-		}
+		} */
 </script>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -108,15 +108,23 @@
 		</table>
 	</div>
 	
+	<%	
+		int orderprice = 0;
+		for(i=0; i<list.size(); i++){
+			orderprice += list.get(i).getTotalprice();
+		}
+	
+	%>
+	
 	<div class="pay">
 		<table border ="1" style="width: 500px; border-spacing: 5px; margin-top: 5px; padding: 5px;">
 			<tr>
 				<td style="text-align: left;">주문금액</td>
-				<td style="text-align: right;">2,500</td>
+				<td style="text-align: right;"><%=orderprice %>원</td>
 			</tr>
 			<tr>
 				<td style="text-align: left;">결제금액</td>
-				<td style="text-align: right;">2,500</td>
+				<td style="text-align: right;"><%=orderprice %>원</td>
 			</tr>
 		</table>
 	</div>
@@ -126,7 +134,7 @@
 			<tr>
 				<td><button class="btn2" onclick="location.href='CartDelAllServlet2';">전체취소</button></td>
 				<td><button class="btn2" onclick="location.href='Menu.jsp';">이전</button></td>
-				<td><button class="btn2" onclick="location.href='Step2.jsp';">다음</button></td>
+				<td><button class="btn2" onclick="location.href='Step1.jsp';">다음</button></td>
 			</tr>
 		</table>
 	</div>

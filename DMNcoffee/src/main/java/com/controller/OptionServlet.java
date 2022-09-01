@@ -33,18 +33,27 @@ public class OptionServlet extends HttpServlet {
 		
 		String pdno = request.getParameter("pdno");
 		String opt = request.getParameter("opt");
+		String oprice = request.getParameter("oprice");
 		
 		System.out.println(pdno);
 		System.out.println(opt);
+ 		System.out.println(oprice);
+		
+ 		int total = 0;
+ 		String[] p =  oprice.split(",");
+ 		for (int i = 0; i < p.length; i++) {
+			total += Integer.parseInt(p[i]);
+		}
+ 		System.out.println(total);
  		
-		  
+ 		
 		ProductService pservice = new ProductService(); 
 		ProductDTO pdto = pservice.selectPDNO(Integer.parseInt(pdno)); 
 		
 		
 		String pdnm = pdto.getPdnm();
 		int amount = 1;
-		int totalprice = pdto.getPdprice();
+		int totalprice = pdto.getPdprice() + total;
 		String ctnm = pdto.getCtnm();
 		
 		CartDTO cdto = new CartDTO();
