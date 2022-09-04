@@ -73,40 +73,6 @@
 
 	
 	
-	/* function getRaidoValue()  {
-		  // 선택된 목록 가져오기
-		  const query = 'input[name="btnradio"]:checked';
-		  const selectedEls = 
-		      document.querySelectorAll(query);
-		  
-		  // 선택된 목록에서 value 찾기
-		  let result = '';
-		  selectedEls.forEach((el) => {
-		    result += el.value + ' ';
-		  });
-		  
-		  // 출력
-		  document.getElementById('result').innerText
-		    = result;
-	}
-	
-	function getCheckboxValue2()  {
-		  // 선택된 목록 가져오기
-		  const query = 'input[name="btncheck"]:checked';
-		  const selectedEls = 
-		      document.querySelectorAll(query);
-		  
-		  // 선택된 목록에서 value 찾기
-		  let result = '';
-		  selectedEls.forEach((el) => {
-		    result += el.value + ' ';
-		  });
-		  
-		  // 출력
-		  document.getElementById('result2').innerText
-		    = result;
-	} */
-	
 	
 </script>
 </head>
@@ -140,11 +106,11 @@
         무료옵션
       </button>
     </h2>
-    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo" style="position: absolute;">
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo" style="position: absolute; overflow-x: scroll;">
       <div class="accordion-body" style="padding: 7px; height: 70px;">
       	
       	<div class="btn-group btn-group-md" role="group" aria-label="Basic radio toggle button group">
-      	<%  for(i=0; i<odto.size(); i++) { 
+	      	<%  for(i=0; i<odto.size(); i++) { 
       			if(odto.get(i).getOptprice()==0){
       				if(odto.get(i).getOptname()!=null){%>
 		  <input type="checkbox" class="btn-check" name="btnradio" id="btnradio<%=i %>" autocomplete="off" value1="<%=odto.get(i).getOptname() %>" value="<%=odto.get(i).getOptprice()%>">
@@ -166,7 +132,8 @@
       <div class="accordion-body"  style="height:70px; padding: 7px;">
       
       	<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-		  
+		     <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value1="없음" value="0" checked onclick="sumchk(this);">
+		 	 <label class="btn btn-outline-primary" for="btncheck<%=i%>"  style="width: 130px; height: 50px; line-height: 130%;">없음<br>(+￦0)</label>
 		  <%  for(i=0; i<odto.size(); i++) { 
 	      			if(odto.get(i).getOptprice()!=0){%>
 			 <input type="checkbox" class="btn-check" name="btncheck" id="btncheck<%=i %>" autocomplete="off" value1="<%=odto.get(i).getOptname()%>" value="<%=odto.get(i).getOptprice()%>" onclick="sumchk(this);">

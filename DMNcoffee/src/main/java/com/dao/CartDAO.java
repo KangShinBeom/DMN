@@ -25,5 +25,10 @@ public class CartDAO {
 		return n;
 	}
 
+	public int Plus(SqlSession session, int num) {
+		int n = session.update("Plus", num);
+		return n;
+	}
+
 
 }

@@ -50,7 +50,7 @@ $(document).ready(function() {
 			<input type="radio" name="slide" id="slide02">
 			<input type="radio" name="slide" id="slide03">
 			<input type="radio" name="slide" id="slide04">
-			<ul class="slidelist">
+			<ul class="slidelist" style="width: 100%;">
 				<% 
 			
 				if(list.size() != 0){

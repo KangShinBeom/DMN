@@ -40,10 +40,14 @@ public class OptionServlet extends HttpServlet {
  		System.out.println(oprice);
 		
  		int total = 0;
- 		String[] p =  oprice.split(",");
- 		for (int i = 0; i < p.length; i++) {
-			total += Integer.parseInt(p[i]);
+ 		
+ 		if (oprice != null) {
+ 			String[] p =  oprice.split(",");
+ 			for (int i = 0; i < p.length; i++) {
+ 				total += Integer.parseInt(p[i]);
+ 			}
 		}
+ 		
  		System.out.println(total);
  		
  		
@@ -55,7 +59,7 @@ public class OptionServlet extends HttpServlet {
 		int amount = 1;
 		int totalprice = pdto.getPdprice() + total;
 		String ctnm = pdto.getCtnm();
-		
+//		int num = 0;
 		CartDTO cdto = new CartDTO();
 		cdto.setPdno(pdno);
 		cdto.setPdnm(pdnm);
@@ -63,7 +67,7 @@ public class OptionServlet extends HttpServlet {
 		cdto.setTotalprice(totalprice);
 		cdto.setOpt(opt);
 		cdto.setCtnm(ctnm);
-		
+//		cdto.setNum(num);
 		System.out.println(cdto);
 		
 		CartService cservice = new CartService();
