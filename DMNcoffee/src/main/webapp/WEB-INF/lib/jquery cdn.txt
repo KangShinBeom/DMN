@@ -1,1 +1,5 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+sweetAlert2 cdn
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

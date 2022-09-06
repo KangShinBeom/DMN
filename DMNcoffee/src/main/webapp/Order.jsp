@@ -17,53 +17,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet"><!-- 폰트 링크 -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#up").on("click", function() {
-			
-			var amount = $("#amount").val();
-			var price = $("#price").val();
-			var num = $("#num").val();
-			if (parseInt(amount)!=null) {
-				amount = parseInt(amount)+1;
-			}
-			$("#amount").val(amount);
-			/* location.href="CartUpdateServlet?num="+amt; */
-			$("#price").val(num*amount);
-		})
-		
-		$("#down").on("click", function() {
-			
-			var amount = $("#amount").val();
-			var price = $("#price").val();
-			var num = $("#num").val();
-			if (parseInt(amount)!=1) {
-				amount = parseInt(amount)-1;
-				$("#price").val(price-num);
-			}
-			$("#amount").val(amount);
-			
-		})
-	})
 
 
-	/* function count(type)  {
-		  // 결과를 표시할 element
-		  const resultElement = document.getElementById('result');
-		  
-		  // 현재 화면에 표시된 값
-		  let number = resultElement.innerText;
-		  
-		  // 더하기/빼기
-		  if(type === 'plus') {
-		    number = parseInt(number) + 1;
-		  }else if(type === 'minus')  {
-			  if(parseInt(number) > 1) {
-		    number = parseInt(number) - 1; }
-		  }
-		  
-		  // 결과 출력
-		  resultElement.innerText = number;
-		} */
+
+	   function plusBtn(id) {
+		     var amount = $("#amount"+id).val();
+	         var price = $("#price"+id).val();
+	         var num = $("#num"+id).val();
+	         var orderprice = $(".orderprice").val();
+	         if (parseInt(amount)!=null) {
+	            amount = parseInt(amount)+1;
+	         }
+	         $("#amount"+id).val(amount);
+	         $("#price"+id).val(num*amount);
+	         $(".orderprice").val(parseInt(orderprice) + parseInt(num));
+	   }
+	   function minusBtn(id) {
+		     var amount = $("#amount"+id).val();
+	         var price = $("#price"+id).val();
+	         var num = $("#num"+id).val();
+	         var orderprice = $(".orderprice").val();
+	         if (parseInt(amount)!=1) {
+	            amount = parseInt(amount)-1;
+	            $("#price"+id).val(price-num);
+	            $(".orderprice").val(parseInt(orderprice) - parseInt(num));
+	         }
+	         $("#amount"+id).val(amount);
+	        
+	   }
+	
+	
 </script>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -100,16 +83,16 @@
 			</tr>
 			<tr>
 				<td>가격 : </td>
-				<td>￦<input id="price" style="border: 0;" readonly value="<%=list.get(i).getTotalprice()%>">
-				<input type="hidden" id="num" value="<%=list.get(i).getTotalprice()%>"></td>
+				<td>￦<input id="price<%=i%>" style="border: 0;" readonly value="<%=list.get(i).getTotalprice()%>">
+				<input type="hidden" id="num<%=i %>" value="<%=list.get(i).getTotalprice()%>"></td>
 			</tr>
 			<tr>
 				<td>수량 : </td>
 				<td>
-					<div>
-						<button type="button" class="btn btn-primary btn-sm" id="down">-</button>
-						<input type="text" name="amount" style="width: 30px; border: 0; text-align: center;" value="<%=list.get(i).getAmount() %>" id="amount" readonly="readonly">
-						<button type="button" class="btn btn-primary btn-sm" id="up">+</button>
+					<div id=<%=i%>>
+		            	<button type="button" class="btn btn-primary btn-sm" onClick="minusBtn(<%=i%>)">-</button>
+		                <input type="text" name="amount" style="width: 30px; border: 0; text-align: center;" value="<%=list.get(i).getAmount() %>" id="amount<%=i%>" readonly="readonly">
+		                <button type="button" class="btn btn-primary btn-sm" onClick="plusBtn(<%=i%>)">+</button>
 					</div>
 				</td>
 			</tr>
@@ -128,11 +111,11 @@
 		<table border ="1" style="width: 500px; border-spacing: 5px; margin-top: 5px; padding: 5px;">
 			<tr>
 				<td style="text-align: left;">주문금액</td>
-				<td style="text-align: right;"><%=orderprice %>원</td>
+				<td style="text-align: right;"><input type="text" class="orderprice" readonly value="<%=orderprice %>">원</td>
 			</tr>
 			<tr>
 				<td style="text-align: left;">결제금액</td>
-				<td style="text-align: right;"><%=orderprice %>원</td>
+				<td style="text-align: right;"><input type="text" class="orderprice" readonly value="<%=orderprice %>">원</td>
 			</tr>
 		</table>
 	</div>

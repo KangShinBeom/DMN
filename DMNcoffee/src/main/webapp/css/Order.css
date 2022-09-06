@@ -101,8 +101,17 @@
 		border-radius: 10px;
 		text-align: center;
 		margin-top: 100px;
-		margin-left: 700px;
+		margin-left: 710px;
 		font-size: 30px;
 		background-color: #f1f3f5;
 		font-family: 'Noto Sans KR', sans-serif;
 	}
+	
+	
+	.orderprice {
+		border: 0;
+		text-align: right;
+		background-color: #f1f3f5;
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	
