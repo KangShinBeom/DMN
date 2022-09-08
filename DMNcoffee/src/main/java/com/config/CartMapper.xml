@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="cartList" resultType="CartDTO">
 		select pdno, pdnm, amount, totalprice, opt, ctnm, num
-		from cart
+		from cart order by num desc
 	</select>
 	
 	<delete id="cartAllDel" parameterType="CartDTO">
@@ -24,5 +24,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set amount = #{amount}+1
 		where num = #{num}
 	</update>
+	
+	<delete id="cartDel" parameterType="int">
+    delete
+    from cart
+    where num = #{num}
+   	</delete>
+	
 	
 </mapper>

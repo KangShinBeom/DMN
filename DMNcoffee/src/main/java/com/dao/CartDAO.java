@@ -30,5 +30,10 @@ public class CartDAO {
 		return n;
 	}
 
+	public int cartDel(SqlSession session, int num) {
+		int n = session.delete("cartDel", num);
+		return n;
+	}
+
 
 }

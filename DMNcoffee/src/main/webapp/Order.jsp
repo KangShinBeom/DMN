@@ -17,35 +17,51 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet"><!-- 폰트 링크 -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-
+		
+		$(document).ready(function() {
+			$("#next").on("click", function() {
+				var orderprice = $(".orderprice").val();
+				location.href="Step1Servlet?orderprice="+orderprice;
+			})
+		})
+		
+		
 
 
 	   function plusBtn(id) {
 		     var amount = $("#amount"+id).val();
 	         var price = $("#price"+id).val();
-	         var num = $("#num"+id).val();
+	         var pri = $("#pri"+id).val();
 	         var orderprice = $(".orderprice").val();
 	         if (parseInt(amount)!=null) {
 	            amount = parseInt(amount)+1;
 	         }
 	         $("#amount"+id).val(amount);
-	         $("#price"+id).val(num*amount);
-	         $(".orderprice").val(parseInt(orderprice) + parseInt(num));
+	         $("#price"+id).val(pri*amount);
+	         $(".orderprice").val(parseInt(orderprice) + parseInt(pri));
 	   }
 	   function minusBtn(id) {
 		     var amount = $("#amount"+id).val();
 	         var price = $("#price"+id).val();
-	         var num = $("#num"+id).val();
+	         var pri = $("#pri"+id).val();
 	         var orderprice = $(".orderprice").val();
 	         if (parseInt(amount)!=1) {
 	            amount = parseInt(amount)-1;
-	            $("#price"+id).val(price-num);
-	            $(".orderprice").val(parseInt(orderprice) - parseInt(num));
+	            $("#price"+id).val(price-pri);
+	            $(".orderprice").val(parseInt(orderprice) - parseInt(pri));
 	         }
 	         $("#amount"+id).val(amount);
 	        
 	   }
-	
+		
+	   
+	   function singleDel(id) {
+		var num = $("#num"+id).val();
+		console.log(num);
+		location.href="CartDelServlet?num="+num;
+	}
+	   
+	   
 	
 </script>
 <%
@@ -69,13 +85,14 @@
 	<div class="name">주 문 내 역</div>
 	
 	<div class="question">
-		<table style="width: 100%;">
-			<% 
+		<% 
 				if(list.size() != 0){
 				for(i=0; i<list.size(); i++) { %>
+		<table style="width: 100%;">
 			<tr>
 				<td rowspan="4" style="width: 150px; height: 150px;"><img src="image/menu/<%=list.get(i).getCtnm()%>/<%=list.get(i).getPdnm()%>.png" style="width: 150px; height: 150px;"></td>
 				<td colspan="2" style="text-align: center; font-size: 30px;"><%=list.get(i).getPdnm()%></td>
+				<td rowspan="4"><button type="button" class="btn-close" id="singleDel<%=i%>" style="margin-right: 5px;" aria-label="Close" onclick="singleDel(<%=i%>)"></button></td>
 			</tr>
 			<tr>
 				<td style="width: 70px; font-size: 10px;">선택옵션 : </td>
@@ -84,7 +101,8 @@
 			<tr>
 				<td>가격 : </td>
 				<td>￦<input id="price<%=i%>" style="border: 0;" readonly value="<%=list.get(i).getTotalprice()%>">
-				<input type="hidden" id="num<%=i %>" value="<%=list.get(i).getTotalprice()%>"></td>
+				<input type="hidden" id="pri<%=i %>" value="<%=list.get(i).getTotalprice()%>">
+				<input type="hidden" id="num<%=i %>" value="<%=list.get(i).getNum()%>"></td>
 			</tr>
 			<tr>
 				<td>수량 : </td>
@@ -96,8 +114,8 @@
 					</div>
 				</td>
 			</tr>
-			<%} } %>
 		</table>
+		<%} } %>
 	</div>
 	
 	<%	
@@ -125,7 +143,7 @@
 			<tr>
 				<td><button class="btn2" onclick="location.href='CartDelAllServlet2';">전체취소</button></td>
 				<td><button class="btn2" onclick="location.href='Menu.jsp';">이전</button></td>
-				<td><button class="btn2" onclick="location.href='Step1.jsp';">다음</button></td>
+				<td><button class="btn2" id="next">다음</button></td>
 			</tr>
 		</table>
 	</div>
