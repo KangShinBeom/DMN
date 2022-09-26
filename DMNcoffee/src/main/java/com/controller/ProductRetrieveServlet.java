@@ -1,7 +1,6 @@
 package com.controller;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.dto.CategoryDTO;
 import com.dto.OptionDTO;
@@ -20,7 +18,7 @@ import com.service.OptionService;
 import com.service.ProductService;
 
 /**
- * Servlet implementation class Option
+ * Servlet implementation class ProductRetrieveServlet
  */
 @WebServlet("/ProductRetrieveServlet")
 public class ProductRetrieveServlet extends HttpServlet {
@@ -38,29 +36,28 @@ public class ProductRetrieveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		
 		
 		int pdno = Integer.parseInt(request.getParameter("pdno"));
+		
 		ProductService pservice = new ProductService();
 		ProductDTO pdto = pservice.selectPDNO(pdno);
 		
-		int ctno = pdto.getCtno();
 		CategoryService cservice = new CategoryService();
-		CategoryDTO cdto = cservice.selectCTNM(ctno);
+		CategoryDTO cdto = cservice.selectCTNM(pdto.getCtno());
 		
-//		int optno = Integer.parseInt(request.getParameter("optno"));
-//		OptionService oservice = new OptionService();
-//		List<OptionDTO> odto = oservice.selectOPT(ctno);
+		OptionService oservice = new OptionService();
 		
+		List<OptionDTO> freelist = oservice.selectOPTFree(pdto.getCtno());
+		List<OptionDTO> paylist = oservice.selectOPTPay(pdto.getCtno());
 		
 		request.setAttribute("ProductRetrieve", pdto);
 		request.setAttribute("CategoryRetrieve", cdto);
-//		request.setAttribute("Option", odto);
-	 
+		request.setAttribute("freelist", freelist);
+		request.setAttribute("paylist", paylist);
+		
 		RequestDispatcher dis = request.getRequestDispatcher("ProductRetrieve.jsp");
 		dis.forward(request, response);
-																																							}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

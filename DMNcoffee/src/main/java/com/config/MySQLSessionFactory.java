@@ -1,0 +1,30 @@
+package com.config;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class MySQLSessionFactory {
+	
+	private static SqlSessionFactory sqlSessionFactory = null;
+	
+	static {
+		String resource = "com/config/Configuration.xml";
+		InputStream inputStream = null;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+			System.out.println("프로그램 로딩 성공");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+	}
+	
+	public static SqlSession getSession() {
+		return sqlSessionFactory.openSession();
+	}
+}

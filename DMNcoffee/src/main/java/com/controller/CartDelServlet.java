@@ -1,6 +1,9 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +21,18 @@ public class CartDelServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int num = Integer.parseInt(request.getParameter("num")) ;
-		CartDTO cdto = new CartDTO();
+		int pdnum = Integer.parseInt(request.getParameter("pdnum")) ;
 		
 		CartService cservice = new CartService();
 		
-		int n = cservice.cartDel(num);
+		cservice.cartDel(pdnum);
 		
-		response.sendRedirect("Order.jsp");
+		List<CartDTO> list = cservice.cartSelectAll();
+		
+		request.setAttribute("CartList",list);
+		
+		RequestDispatcher dis = request.getRequestDispatcher("html/OrderHistory.jsp");
+		dis.forward(request, response);
 		
 	}
 

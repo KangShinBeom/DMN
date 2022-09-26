@@ -4,18 +4,18 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.config.MySqlSessionFactory;
+import com.config.MySQLSessionFactory;
 import com.dao.ProductDAO;
 import com.dto.ProductDTO;
 
 public class ProductService {
 	
-	public List<ProductDTO> select(int ctno){
-		ProductDAO pdao = new ProductDAO();
-		SqlSession session = MySqlSessionFactory.getSession();
+	public List<ProductDTO> productSelectAll(int ctno){
+		SqlSession session = MySQLSessionFactory.getSession();
 		List<ProductDTO> list = null;
 		try {
-			list = pdao.select(session,ctno);
+			ProductDAO dao = new ProductDAO();
+			list = dao.productSelectAll(session,ctno);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -23,12 +23,13 @@ public class ProductService {
 		}
 		return list;
 	}
-	public ProductDTO selectPDNO(int pdno){
-		SqlSession session = MySqlSessionFactory.getSession();
-		ProductDTO list = null;
+
+	public List<ProductDTO> selectCTNO(int ctno) {
+		SqlSession session = MySQLSessionFactory.getSession();
+		List<ProductDTO> list = null;
 		try {
-			ProductDAO pdao = new ProductDAO();
-			list = pdao.selectPDNO(session,pdno);
+			ProductDAO dao = new ProductDAO();
+			list = dao.selectCTNO(session,ctno);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -36,7 +37,19 @@ public class ProductService {
 		}
 		return list;
 	}
-	
-	
+
+	public ProductDTO selectPDNO(int pdno) {
+		SqlSession session = MySQLSessionFactory.getSession();
+		ProductDTO dto = null;
+		try {
+			ProductDAO dao = new ProductDAO();
+			dto = dao.selectPDNO(session,pdno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return dto;
+	}
 	
 }

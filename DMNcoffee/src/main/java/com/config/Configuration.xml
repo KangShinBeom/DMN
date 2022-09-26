@@ -7,9 +7,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <properties resource="com/config/jdbc.properties" />
    
     <typeAliases>
-    <typeAlias type="com.dto.CartDTO" alias="CartDTO"/>
-   </typeAliases>
-   
+   		<typeAlias type="com.dto.CartDTO" alias="CartDTO"/>
+    	<typeAlias type="com.dto.CategoryDTO" alias="CategoryDTO"/>
+    	<typeAlias type="com.dto.LogDTO" alias="LogDTO"/>
+    	<typeAlias type="com.dto.MemberDTO" alias="MemberDTO"/>
+    	<typeAlias type="com.dto.OptionDTO" alias="OptionDTO"/>
+    	<typeAlias type="com.dto.ProductDTO" alias="ProductDTO"/>
+    	<typeAlias type="com.dto.OrderInfoDTO" alias="OrderInfoDTO"/>
+   	</typeAliases>
    
 	<environments default="development">
 		<environment id="development">
@@ -22,12 +27,17 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			</dataSource>
 		</environment>
 	</environments>
+	
 	<mappers>
-		<mapper resource="com/config/CategoryMapper.xml" />
-		<mapper resource="com/config/ProductMapper.xml" />
-		<mapper resource="com/config/OptionMapper.xml" />
-		<mapper resource="com/config/CartMapper.xml" />
+		<mapper resource="com/mapper/CartMapper.xml" />
+		<mapper resource="com/mapper/CategoryMapper.xml" />
+		<mapper resource="com/mapper/LogMapper.xml" />
+		<mapper resource="com/mapper/MemberMapper.xml" />
+		<mapper resource="com/mapper/OptionMapper.xml" />
+		<mapper resource="com/mapper/ProductMapper.xml" />
+		<mapper resource="com/mapper/OrderInfoMapper.xml" />
 	</mappers>
+	
 </configuration>
 
 

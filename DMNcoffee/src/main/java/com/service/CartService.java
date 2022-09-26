@@ -1,40 +1,22 @@
 package com.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.config.MySqlSessionFactory;
+import com.config.MySQLSessionFactory;
 import com.dao.CartDAO;
-import com.dao.CategoryDAO;
-import com.dao.OptionDAO;
-import com.dao.ProductDAO;
 import com.dto.CartDTO;
-import com.dto.CategoryDTO;
-import com.dto.OptionDTO;
-import com.dto.ProductDTO;
 
 public class CartService {
 
-	public int cartAdd(CartDTO cdto) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		  int n = 0;
-		  try {
-			  CartDAO dao = new CartDAO();
-			  n = dao.cartAdd(session, cdto);
-			  session.commit();
-		  }finally {
-			session.close();
-		}
-		  return n;
-	}
-	
-	public List<CartDTO> cartList() {
-		SqlSession session = MySqlSessionFactory.getSession();
+	public List<CartDTO> cartSelectAll() {
+		SqlSession session = MySQLSessionFactory.getSession();
 		List<CartDTO> list = null;
 		try {
 			CartDAO dao = new CartDAO();
-			list = dao.cartList(session);
+			list = dao.cartSelectAll(session);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -43,49 +25,66 @@ public class CartService {
 		return list;
 	}
 
-	public int cartAllDel(List<CartDTO> list) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		int n = 0;
+	public void cartDelAll() {
+		SqlSession session = MySQLSessionFactory.getSession();
 		try {
 			CartDAO dao = new CartDAO();
-			n = dao.cartAllDel(session, list);
+			dao.cartDelAll(session);
 			session.commit();
-		} finally {
+		}finally {
 			session.close();
 		}
-		return n;
 	}
 
-	public int Plus(int num) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		int n = 0;
+	public void cartAdd(CartDTO cdto) {
+		SqlSession session = MySQLSessionFactory.getSession();
 		try {
 			CartDAO dao = new CartDAO();
-			n = dao.Plus(session, num);
+			dao.cartAdd(session,cdto);
 			session.commit();
-		} finally {
+		}finally {
 			session.close();
 		}
-		return n;
 	}
 
-	public int cartDel(int num) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		int n = 0;
+	public void cartDel(int pdnum) {
+		SqlSession session = MySQLSessionFactory.getSession();
 		try {
 			CartDAO dao = new CartDAO();
-			n = dao.cartDel(session, num);
+			dao.cartDel(session,pdnum);
 			session.commit();
-		} finally {
+		}finally {
 			session.close();
 		}
-		return n;
+	}
+
+	public void cartUpdate(Map<String, Integer> cartInfo) {
+		SqlSession session = MySQLSessionFactory.getSession();
+		try {
+			CartDAO dao = new CartDAO();
+			dao.cartUpdate(session,cartInfo);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		
+	}
+
+	public CartDTO cartSelect(int pdnum) {
+		SqlSession session = MySQLSessionFactory.getSession();
+		CartDTO dto = null;
+		try {
+			CartDAO dao = new CartDAO();
+			dto = dao.cartSelect(session,pdnum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return dto;
 	}
 
 	
-
-	
-
 	
 	
 }

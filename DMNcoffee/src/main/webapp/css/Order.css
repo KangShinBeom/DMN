@@ -4,33 +4,35 @@
 		height: auto;
 	}
 	.home{
-		background-color : transparent;
 		position: absolute;
   		top: 25px;
   		left : 715px;
+  		background-color : transparent;
   		border: none;
   		cursor:pointer;
 	}
 	.logo{
+		position: absolute;
+		top: 17px;
+  		left : 1020px;
 		width : 200px;
 		height: auto;
 		background-color : transparent;
-		position: absolute;
-  		top: 17px;
-  		left : 1020px;
   		border: none;
 	}
-	.head{
-		position : absolute;
-		left: 715px;
-		top : 80px;
+	.name{
+		border: 1px;
 		width: 510px;
-		text-align: left;
-		color:#6495ED;
+		height: 50px;
+		border-radius: 10px;
+		text-align: center;
+		margin-top: 100px;
+		margin-left: 710px;
+		background-color: #f1f3f5;
 		font-family: 'Noto Sans KR', sans-serif;
-		font-size: 20px;
+		font-size: 28px;
 	}
-	.question{
+	.orderhistory{
 		position : absolute;
 		font-family: 'Noto Sans KR', sans-serif;
 		left: 715px;
@@ -40,20 +42,17 @@
 		height: 470px;
 		overflow-y: auto; 
 	}
-	.member{
-		position : absolute;
-		left: 715px;
-		top: 350px;
+	.btn-primary{
+		width: 40px;
+		color:black;
+		background-color: #f1f3f5;
+		border: none;
 	}
-	.btn1{
-		background-color:  #f1f3f5;
-		border : none;
-		border-radius: 10px;
-		font-family: 'Noto Sans KR', sans-serif;
-		font-size : 28px;
-		width : 120px;
-		cursor: pointer;
-		height: 140px;
+	.btn:focus{
+		background-color: #6495ED;
+	}
+	.btn:hover{
+		background-color: #6495ED;
 	}
 	.pay{
 		background-color:  #f1f3f5;
@@ -67,18 +66,14 @@
 		top: 650px;
 		height: 200px;
 	}
-	.btn1{
-		background-color:  #f1f3f5;
-		border : none;
-		border-radius: 10px;
-		font-family: 'Noto Sans KR', sans-serif;
-		font-size: 24px;
-		width : 100px;
-		cursor: pointer;
-		height: 120px;
+	.pay-table{
+		margin-left: 15px;
+		margin-top: 10px;
+		padding: 5px;
 	}
-	.btn2{
-		background-color:  #f1f3f5;
+	/* 버튼테이블 */
+	.btn1{
+		background-color: #f1f3f5;
 		border : none;
 		padding : 5px;
 		margin: 5px;
@@ -93,25 +88,3 @@
 		left: 710px;
 		top: 860px;
 	}
-	
-	.name{
-		border: 1px;
-		width: 510px;
-		height: 50px;
-		border-radius: 10px;
-		text-align: center;
-		margin-top: 100px;
-		margin-left: 710px;
-		font-size: 30px;
-		background-color: #f1f3f5;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	
-	
-	.orderprice {
-		border: 0;
-		text-align: right;
-		background-color: #f1f3f5;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	

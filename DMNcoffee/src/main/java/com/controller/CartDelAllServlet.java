@@ -1,9 +1,9 @@
 package com.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,34 +13,42 @@ import javax.servlet.http.HttpServletResponse;
 import com.dto.CartDTO;
 import com.service.CartService;
 
+/**
+ * Servlet implementation class CartDelAllServlet
+ */
 @WebServlet("/CartDelAllServlet")
 public class CartDelAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public CartDelAllServlet() {}
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CartDelAllServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		CartService cservice = new CartService();
-		List<CartDTO> list = cservice.cartList();
 		
+		cservice.cartDelAll();
+		List<CartDTO> list = cservice.cartSelectAll();
 		
-		int n = cservice.cartAllDel(list);
-		System.out.println("삭제된 카트 갯수 = " + n);
+		request.setAttribute("CartList", list);
 		
-//		response.sendRedirect("Menu.jsp");
-		
-		PrintWriter out = response.getWriter(); //선언
-		   
-		   String str="";
-		   str = "<script language='javascript'>";
-		   str += "location.href='Menu.jsp'";  //오프너 새로고침
-		    str += "</script>";
-		   out.print(str);
-		
+		RequestDispatcher dis = request.getRequestDispatcher("html/Cart.jsp");
+		dis.forward(request, response);
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

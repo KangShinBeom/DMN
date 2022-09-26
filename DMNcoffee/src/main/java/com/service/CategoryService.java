@@ -4,20 +4,18 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.config.MySqlSessionFactory;
+import com.config.MySQLSessionFactory;
 import com.dao.CategoryDAO;
-import com.dao.ProductDAO;
 import com.dto.CategoryDTO;
-import com.dto.ProductDTO;
 
 public class CategoryService {
 	
-	public List<CategoryDTO> selectAll(){
-		SqlSession session = MySqlSessionFactory.getSession();
+	public List<CategoryDTO> categorySelectAll(){
+		SqlSession session = MySQLSessionFactory.getSession();
 		List<CategoryDTO> list = null;
 		try {
-			CategoryDAO cdao = new CategoryDAO();
-			list = cdao.selectAll(session);
+			CategoryDAO dao = new CategoryDAO();
+			list = dao.categorySelectAll(session);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -27,17 +25,17 @@ public class CategoryService {
 	}
 
 	public CategoryDTO selectCTNM(int ctno) {
-		SqlSession session = MySqlSessionFactory.getSession();
-		CategoryDTO list = null;
+		SqlSession session = MySQLSessionFactory.getSession();
+		CategoryDTO dto = null;
 		try {
-			CategoryDAO cdao = new CategoryDAO();
-			list = cdao.selectCTNM(session,ctno);
+			CategoryDAO dao = new CategoryDAO();
+			dto = dao.selectCTNM(session,ctno);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			session.close();
 		}
-		return list;
+		return dto;
 	}
 	
 }

@@ -9,12 +9,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	var pdno =opener.document.getElementById("pdno").value;
+	var pdno = opener.document.getElementById("pdno").value;
 	
-	/* $(document).one("onload",function(){
-		location.href="ProductRetrieveServlet?pdno="+pdno;//한번만 실행되게 하기
-	}) */
-	location.href="ProductRetrieveServlet?pdno="+pdno;//한번만 실행되게 하기
+	location.href="ProductRetrieveServlet?pdno="+pdno;
 });		
 </script>
 </head>

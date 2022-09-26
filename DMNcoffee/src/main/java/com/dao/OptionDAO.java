@@ -13,4 +13,14 @@ public class OptionDAO {
 		return list;
 	}
 
+	public List<OptionDTO> selectOPTFree(SqlSession session, int ctno) {
+		List<OptionDTO> list = session.selectList("selectOPTFree",ctno);
+		return list;
+	}
+
+	public List<OptionDTO> selectOPTPay(SqlSession session, int ctno) {
+		List<OptionDTO> list = session.selectList("selectOPTPay",ctno);
+		return list;
+	}
+
 }

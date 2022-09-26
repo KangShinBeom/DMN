@@ -1,39 +1,38 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.dto.CartDTO;
-import com.dto.OptionDTO;
-import com.dto.ProductDTO;
 
 public class CartDAO {
 
-	public int cartAdd(SqlSession session, CartDTO cdto) {
-		int n = session.insert("cartAdd", cdto);
-		   return n;
-	}
-
-	public List<CartDTO> cartList(SqlSession session) {
-		List<CartDTO> list = session.selectList("cartList");
+	public List<CartDTO> cartSelectAll(SqlSession session) {
+		List<CartDTO> list = session.selectList("cartSelectAll");
 		return list;
 	}
 
-	public int cartAllDel(SqlSession session, List<CartDTO> list) {
-		int n = session.delete("cartAllDel", list);
-		return n;
+	public void cartDelAll(SqlSession session) {
+		session.delete("cartDelAll");
 	}
 
-	public int Plus(SqlSession session, int num) {
-		int n = session.update("Plus", num);
-		return n;
+	public void cartAdd(SqlSession session, CartDTO cdto) {
+		session.insert("cartAdd",cdto);
 	}
 
-	public int cartDel(SqlSession session, int num) {
-		int n = session.delete("cartDel", num);
-		return n;
+	public void cartDel(SqlSession session, int pdnum) {
+		session.delete("cartDel",pdnum);
 	}
 
+	public void cartUpdate(SqlSession session, Map<String, Integer> cartInfo) {
+		session.update("cartUpdate",cartInfo);
+	}
+
+	public CartDTO cartSelect(SqlSession session, int pdnum) {
+		CartDTO dto = session.selectOne("cartSelect",pdnum);
+		return dto;
+	}
 
 }
