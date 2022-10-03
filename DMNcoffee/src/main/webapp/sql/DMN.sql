@@ -186,8 +186,11 @@ insert into OPT VALUES (25,'헤이즐넛시럽',500,02);
 
 --  OPT  CATEGORY 4[스무디] INSERT
 insert into OPT VALUES (41,'덜달게',0,04);
-insert into OPT VALUES (42,'시럽추가',500,04);
-insert into OPT VALUES (43,'휘핑크림',500,04);
+insert into OPT VALUES (42,'슈가시럽',500,04);
+insert into OPT VALUES (43,'바닐라시럽',500,04);
+insert into OPT VALUES (44,'카라멜시럽',500,04);
+insert into OPT VALUES (45,'헤이즐넛시럽',500,04);
+insert into OPT VALUES (46,'휘핑크림',500,04);
 
 --  OPT CATEGORY 5[커피(HOT)] INSERT
 insert into OPT VALUES (51,'샷추가',500,05);

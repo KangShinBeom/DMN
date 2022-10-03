@@ -52,7 +52,7 @@ public class OrderConfirmationServlet extends HttpServlet {
 		
 		String url = "OrderConfirmation.jsp";
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String date = sdf.format(Calendar.getInstance().getTime());
 		
 		CartService cservice =  new CartService();
