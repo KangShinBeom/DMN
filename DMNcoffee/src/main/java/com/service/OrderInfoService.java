@@ -51,6 +51,34 @@ public class OrderInfoService {
 		}
 		return list;
 	}
+
+	public String selectOrderLastDate() {
+		SqlSession session = MySQLSessionFactory.getSession();
+		String lastDate = null;
+		try {
+			OrderInfoDAO dao = new OrderInfoDAO();
+			lastDate = dao.selectOrderLastDate(session);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return lastDate;
+	}
+
+	public List<OrderInfoDTO> selectOrderDate(String date) {
+		SqlSession session = MySQLSessionFactory.getSession();
+		List<OrderInfoDTO> list = null;
+		try {
+			OrderInfoDAO dao = new OrderInfoDAO();
+			list = dao.selectOrderDate(session,date);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return list;
+	}
 	
 	
 	

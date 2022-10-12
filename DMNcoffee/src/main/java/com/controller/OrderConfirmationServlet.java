@@ -119,51 +119,69 @@ public class OrderConfirmationServlet extends HttpServlet {
 		
 		int orderseq = 0;
 		
-		if(orderlist.size() == 0) {
+		if(orderlist.size() == 0) {//처음 주문들어갈때 1번으로 들어가게
 			
 			orderseq = 1;
 			
 			for(int i=0;i<cartlist.size();i++) {
-				CartDTO cdto = cartlist.get(i);
-				int pdnum = cdto.getPdnum();
-				String pdnm = cdto.getPdnm();
-				String opt = cdto.getOpt();
-				int amount = cdto.getAmount();
-				int price = cdto.getTotalprice();
+				CartDTO dto = cartlist.get(i);
+				int pdnum = dto.getPdnum();
+				String pdnm = dto.getPdnm();
+				String opt = dto.getOpt();
+				int amount = dto.getAmount();
+				int price = dto.getTotalprice();
 				String complete_yn = "N";
 				
 				oservice.orderAdd(new OrderInfoDTO(date,orderseq,pdnum,pdnm,opt,amount,price,ordertakeout,complete_yn));
-			}//for
-		}else {
-			int[] arr = new int[orderlist.size()];
-			int max = arr[0];
+			}
+		}else {//처음주문 외
+			String lastDate = oservice.selectOrderLastDate();
 			
-			for(int i=0;i<orderlist.size();i++) {
+			if(lastDate.equals(date)) {//날짜가 같으면
 				
-				arr[i] = orderlist.get(i).getOrderseq();
+				List<OrderInfoDTO> orderlistSameDate = oservice.selectOrderDate(date);
 				
-				for(int j=0;j<orderlist.size();j++) {
-					if(arr[i] > max) {
-						max = arr[i];
+				int[] arr = new int[orderlistSameDate.size()];
+				int max = arr[0];
+				
+				for(int i=0;i<orderlistSameDate.size();i++) {
+					arr[i] = orderlistSameDate.get(i).getOrderseq();
+					for(int j=0;j<orderlistSameDate.size();j++) {
+						if(arr[i] > max) {
+							max = arr[i];
+						}
 					}
 				}
-			}
-			
-			orderseq = max+1;
-			
-			for(int i=0;i<cartlist.size();i++) {
-				CartDTO cdto = cartlist.get(i);
-				int pdnum = cdto.getPdnum();
-				String pdnm = cdto.getPdnm();
-				String opt = cdto.getOpt();
-				int amount = cdto.getAmount();
-				int price = cdto.getTotalprice();
-				String complete_yn = "N";
 				
-				oservice.orderAdd(new OrderInfoDTO(date,orderseq,pdnum,pdnm,opt,amount,price,ordertakeout,complete_yn));
+				orderseq = max+1;
+				
+				for(int i=0;i<cartlist.size();i++) {
+					CartDTO cdto = cartlist.get(i);
+					int pdnum = cdto.getPdnum();
+					String pdnm = cdto.getPdnm();
+					String opt = cdto.getOpt();
+					int amount = cdto.getAmount();
+					int price = cdto.getTotalprice();
+					String complete_yn = "N";
+					
+					oservice.orderAdd(new OrderInfoDTO(date,orderseq,pdnum,pdnm,opt,amount,price,ordertakeout,complete_yn));
+				}
+			}else {//날짜가 다르면
+				orderseq =1;
+				
+				for(int i=0;i<cartlist.size();i++) {
+					CartDTO dto = cartlist.get(i);
+					int pdnum = dto.getPdnum();
+					String pdnm = dto.getPdnm();
+					String opt = dto.getOpt();
+					int amount = dto.getAmount();
+					int price = dto.getTotalprice();
+					String complete_yn = "N";
+					
+					oservice.orderAdd(new OrderInfoDTO(date,orderseq,pdnum,pdnm,opt,amount,price,ordertakeout,complete_yn));
+				}
 			}
-			
-		}//else
+		}
 		
 		cservice.cartDelAll();
 		

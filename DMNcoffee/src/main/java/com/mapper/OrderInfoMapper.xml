@@ -20,4 +20,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where orderseq = #{orderseq}
 	</select>
 	
+	<select id="selectOrderLastDate" resultType="String">
+		select max(orderdate)
+		from orderinfo
+	</select>
+	
+	<select id="selectOrderDate" resultType="OrderInfoDTO" parameterType="String">
+		select orderdate, orderseq, pdnum, pdnm, opt, amount, price, ordertakeout, complete_yn 
+		from orderinfo
+		where orderdate = #{orderdate}
+	</select>
+	
 </mapper>

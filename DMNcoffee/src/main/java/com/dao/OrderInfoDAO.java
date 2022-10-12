@@ -21,6 +21,16 @@ public class OrderInfoDAO {
 		List<OrderInfoDTO> list = session.selectList("selectOrderSeq",orderseq);
 		return list;
 	}
+
+	public String selectOrderLastDate(SqlSession session) {
+		String lastDate = session.selectOne("selectOrderLastDate");
+		return lastDate;
+	}
+
+	public List<OrderInfoDTO> selectOrderDate(SqlSession session, String date) {
+		List<OrderInfoDTO> list = session.selectList("selectOrderDate",date);
+		return list;
+	}
 	
 	
 	
