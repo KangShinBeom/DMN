@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet"><!-- 폰트 링크 -->
 <link rel="stylesheet" href="css/Step1.css?ver=1"/><!-- css 링크 -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -32,6 +33,22 @@ $(document).ready(function() {
 	
 	$(".btn1").on("click", function() {
 		location.href="MemberLookupAndJoinServlet";
+	});
+	
+	$("#cancel").on("click",function(){
+		Swal.fire({
+			  icon: 'warning',
+			  title: '메인페이지로 돌아가시겠습니까?',
+			  showCancelButton:true,
+			  confirmButtonColor: "#6495ED",
+			  cancelButtonColor: "#f1f3f5",
+			  confirmButtonText:"네",
+			  cancelButtonText:"아니오"
+			}).then(result=>{
+				if(result.isConfirmed){
+					location.href="Main.jsp";
+				}
+			});
 	});
 })	
 </script>
@@ -61,7 +78,7 @@ $(document).ready(function() {
 	<div class="bottom">
 		<table>
 			<tr>
-				<td><button class="btn2" onclick="location.href='Main.jsp';">전체취소</button></td>
+				<td><button class="btn2" id="cancel">전체취소</button></td>
 				<td><button class="btn2" id="prev">이전</button></td>
 				<td><button class="btn2" id="next">다음</button></td>
 			</tr>

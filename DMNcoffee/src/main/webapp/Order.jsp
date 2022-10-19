@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet"><!-- 폰트 링크 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -33,6 +34,22 @@ $(document).ready(function(){
 	$("#next").on("click", function() {
 		var orderprice = $(".orderprice").val();
 		location.href="Step1Servlet?orderprice="+orderprice;
+	});
+	
+	$("#cancel").on("click",function(){
+		Swal.fire({
+			  icon: 'warning',
+			  title: '메인페이지로 돌아가시겠습니까?',
+			  showCancelButton:true,
+			  confirmButtonColor: "#6495ED",
+			  cancelButtonColor: "#f1f3f5",
+			  confirmButtonText:"네",
+			  cancelButtonText:"아니오"
+			}).then(result=>{
+				if(result.isConfirmed){
+					location.href="Main.jsp";
+				}
+			});
 	});
 	
 })
@@ -137,7 +154,7 @@ $(document).ready(function(){
 	<div class="bottom">
 		<table>
 			<tr>
-				<td><button class="btn1" onclick="location.href='Main.jsp';">전체취소</button></td>
+				<td><button class="btn1" id="cancel">전체취소</button></td>
 				<td><button class="btn1" onclick="location.href='Menu.jsp';">이전</button></td>
 				<td><button class="btn1" id="next">다음</button></td>
 			</tr>
